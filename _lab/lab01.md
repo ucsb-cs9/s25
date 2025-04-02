@@ -4,7 +4,11 @@
 | ----- | ----- | ----- | ----- | ----- |
 | [lab01](https://ucsb-cs9.github.io/s24-ykk/lab/lab01/) | true | Python Classes | Tue 04/09 11:00AM | Tue 04/16 11:59PM |
 
-The second assignment is to create a vulnerability database. The practical skills to be developed include:
+The second assignment is to create a vulnerability database to aid in keeping track of the vulnerabilities that you have been reading about and the weakness classes that they belong to.
+Vulnerabilities are recorded in the authoritative list of [Common Vulnerabilities and Exposures (CVE)](https://www.cve.org/), and given a unique CVE identifier.
+After analysis, each vulnerability is classified according to a known weakness that is among the [Common Weakness Enumeration (CWE)](https://cwe.mitre.org/) list.
+
+The practical skills to be developed include:
 
 * Defining classes in Python  
 * Defining methods in Python classes
@@ -40,3 +44,40 @@ You will write a constructor that allows the user to construct a Movie object by
 * \_\_init\_\_(self, cve, cwe, year)
 
 In addition to your constructor, your class definition should also support “setter” methods that can update the state of the Vulnerability objects:
+
+Each Vulnerability object should be able to call a method to_string() that you will implement, which returns a str with all the vulnerability attributes EXACTLY as shown (i.e., the string should contain all attributes in the following EXACT format "CVE" (CWE) - YEAR):
+
+```python
+vulnerability1 = Vulnerability("CVE-2024-37032", "CWE-20", 2024)
+print(vulnerability1.to_string())
+print() # separate two vulnerabilities with a newline
+vulnerability2 = Vulnerability("CVE-2024-3402", "CWE-1426", 2024)
+print(vulnerability2.to_string())
+```
+
+Output:
+```
+"CVE-2024-37032" (CWE-20) - 2024
+"CVE-2024-3402" (CWE-1426) - 2024
+```
+
+IMPORTANT: The .to_string() return value in the example above does not contain a newline character (\n) at the end.
+
+## Test your code
+To ensure that your methods return the correct values of correct types, create a file testFile.py to hold the tests for the methods.
+Below are potential objects and corresponding assertions that you can include:
+```Python
+from Vulnerability import Vulnerability
+
+vuln0 = Vulnerability()
+assert vuln0.cve == None
+### TODO: write additional asserts for the other methods
+### to test the default form of the constructor
+
+vuln1 = Vulnerability("CVE-2008-1303", "CWE-20", 2008)
+assert vuln1.cve == "CVE-2008-1303"
+### TODO: write additional asserts for the other methods
+assert vuln1.to_string() == '"CVE-2008-1303" (CWE-20) - 2008'
+
+### TODO: write additional asserts for at least one other vulnerability
+```
