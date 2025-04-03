@@ -340,3 +340,5 @@ Note on grading for labs with testing component: For this lab assignment (and al
 - If you write your tests correctly according to the specifications, then you will receive 100/100 points.
 - If your written tests are missing, incomplete, or incorrect, then there will be up to a 10 point deduction from the autograder score. For example, if you didn't write any tests, then your lab score will be 90/100 (-10 point deduction from the autograder's score).
 - Additionally, if the instructions are asking you to implement something in a certain way, e.g., to minimize code duplication, we might subtract points if your implementation does not follow these instructions.
+
+_Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
