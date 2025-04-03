@@ -7,6 +7,8 @@
 The second assignment is to create a vulnerability database to aid in keeping track of the vulnerabilities that you have been reading about and the weakness classes that they belong to.
 Vulnerabilities are recorded in the authoritative list of [Common Vulnerabilities and Exposures (CVE)](https://www.cve.org/), and given a unique CVE identifier.
 After analysis, each vulnerability is classified according to a known weakness that is among the [Common Weakness Enumeration (CWE)](https://cwe.mitre.org/) list.
+These are important classifications (look up some of the examples in this lesson to learn more), but they are difficult for humans to process visually. 
+Fortunately, you can make a data structure to help you keep track of this.
 
 The practical skills to be developed include:
 
@@ -36,7 +38,7 @@ The Vulnerability.py file will contain the definition of a Vulnerability record.
 We will define the Vulnerability attributes as follows:
 
 * **CVE** \- str that represents the unique CVE identifier of the vulnerability. Your program should ensure this field will be stored as a Python alpha-numeric string, with the same format as is stored in MITRE (two dashes separating three sections of the identifier CVE-2025-31910).  
-* **CWE** \- str that represents the MITRE weakness classification of the vulnerability. Your program should ensure that this field will be stored in [Title case](https://docs.python.org/3/library/stdtypes.html#str.cve).  
+* **CWE** \- str that represents the MITRE weakness classification of the vulnerability.
 * **year** \- int that represents the release year of a vulnerability.
 
 You will write a constructor that allows the user to construct a Vulnerability object by passing in values for all of the fields. Your constructor should set these attributes with the value None by default.
