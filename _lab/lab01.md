@@ -199,3 +199,5 @@ Check that you named your file EXACTLY as was specified - remember that Python i
 NoneType has no attribute ...
 ```
 Remember that before you can use `.title()` or `.upper()` in your constructor, you need to verify that the parameter is a string instead of None. Use the if/else branches to differentiate between these cases.
+
+_Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
