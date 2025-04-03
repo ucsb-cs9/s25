@@ -65,11 +65,11 @@ If you are not familiar with the cd command:
 Execution: After you open the terminal and navigate to the lab folder following the steps above, type the following command to run testFile.py using pytest.
 
 On Mac:
-```python3 -m pytest testFile.py```
+```3 -m pytest testFile.py```
 
 
 On Windows:
-```python -m pytest testFile.py```
+``` -m pytest testFile.py```
 
 
 If you see something like this, congratulations! You successfully installed and ran pytest.
@@ -113,7 +113,7 @@ We will define this class' attributes as follows:
 
 You should write a constructor that passes in values for all the fields. You may assume calls to the constructor will always contain a non-empty str representing the protocol's level and a positive float representing the protocol's cost.
 
-```python
+```
 __init__(self, level, cost)
 ```
 
@@ -126,7 +126,7 @@ In addition to your constructor, your class definition should also support "sett
 
 Each Protocol object should be able to call a method info(self) that you will implement, which returns a str with the current protocol's level and cost. Since there are many protocols, the following output represents what will be returned if we call the info method after constructing a Protocol object:
 
-```python
+```
 proto1 = Protocol('enhanced', 20.5)
 print(proto1.info())
 ```
@@ -142,7 +142,7 @@ Note: The quotation marks around the returned string in IDLE tell us that the va
 Hint: Note that the return string should contain a cost with two decimal places. Use the f-string to show the floating point values with 2 decimal places. 
 
 For example:
-```python
+```
 >>> cost = 5
 >>> f"{cost:.2f}"
 '5.00'
@@ -151,7 +151,7 @@ For example:
 ### Template for the Protocol and TestProtocol classes
 Below is the skeleton template for the Protocol class that you can use as a starting point for your `Protocol.py` file:
 
-```python
+```
 class Protocol:
     def __init__(self):
         pass
@@ -174,7 +174,7 @@ class Protocol:
 
 Immediately, we can add the corresponding test class and its testing methods to the testFile.py like so:
 
-```python
+```
 from Protocol import Protocol
 
 class TestProtocol:
@@ -213,7 +213,7 @@ Now, inside each test function in `testFile.py`, we test each class's methods us
 
 For example, we can use the example that we saw above, to create a sample Protocol object and test that it was correctly created:
 
-```python
+```
 from Protocol import Protocol
 
 class TestProtocol:
@@ -224,7 +224,7 @@ class TestProtocol:
 ```
 Continue in this way to test the rest of the methods of the class:
 
-```python
+```
 def test_get_level(self):
     protocol = Protocol('military', 20.95)
     assert protocol.get_level() == 'military'
@@ -249,7 +249,7 @@ Your Encryption class definition should support the following constructor and me
 
 An example of what the return string format of the `info()` method is shown below:
 
-```python
+```
 >>> protocol1 = Encryption('basic', 3.0, "AES")
 >>> protocol1.info()
 'AES Encryption, basic: 3.00 cost units'
@@ -273,7 +273,7 @@ Your Authentication class definition should support the following constructor an
 
 An example of what the return string format of the info method is shown below:
 
-```python
+```
 >>> auth1 = Authentication('military', 8.5, ["Password", "Fingerprint"])
 >>> auth1.info()
 'Password/Fingerprint Authentication, military: 8.50 cost units'
@@ -293,7 +293,7 @@ Your SecuritySuite class definition should support the following constructor and
 
 An example of what the return string format of the total method is shown below:
 
-```python
+```
 protocol1 = Encryption('basic', 3.0, "AES")
 auth1 = Authentication('military', 8.5, ["Password", "Fingerprint"])
 suite = SecuritySuite()
