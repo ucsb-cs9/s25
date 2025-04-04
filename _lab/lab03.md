@@ -1,7 +1,7 @@
 
 | num | ready? | description | assigned | due |
 | ----- | ----- | ----- | ----- | ----- |
-| [lab02](https://ucsb-cs9.github.io/s24/lab/lab02/) | false | Protocol Testing | ? | ? |
+| [lab03](https://ucsb-cs9.github.io/s25/lab/lab03/) | false | Recursion | ? | ? |
 
 # Learning Goals
 In this lab, you’ll practice:
