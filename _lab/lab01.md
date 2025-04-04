@@ -1,8 +1,13 @@
-# lab01 : Vulnerability Database - Python Classes
+---
+layout: lab
+num: lab01
+ready: false
+desc: "Vulnerability Database - Python Classes"
+assigned: 2024-04-07 11:00:00.00-7
+due: 2024-04-15 23:59:59.59-7
+---
 
-| num | ready? | description | assigned | due |
-| ----- | ----- | ----- | ----- | ----- |
-| [lab01](https://ucsb-cs9.github.io/s24-ykk/lab/lab01/) | true | Python Classes | Tue 04/09 11:00AM | Tue 04/16 11:59PM |
+# Introduction
 
 The second assignment is to create a vulnerability database to aid in keeping track of the vulnerabilities that you have been reading about and the weakness classes that they belong to.
 Vulnerabilities are recorded in the authoritative list of [Common Vulnerabilities and Exposures (CVE)](https://www.cve.org/), and given a unique CVE identifier.
@@ -17,7 +22,9 @@ The practical skills to be developed include:
 
 Note: In general, it is always important to work on labs and reading early so you can gain the proper context and utilize our office hours to seek assistance / ask clarifying questions during the week before the deadline, if needed!
 
-It is a good idea to read up on some tools we’ll use in this lab before you get started, specifically Chapter 1.4.2.1 (String Formatting) and 1.4.6 - 1.4.6.1 (Object Oriented Programming).
+It is a good idea to read up on some tools we’ll use in this lab before you get started, specifically:
+- physical book's Chapter 1.4.2.1 (String Formatting) and 1.4.6 - 1.4.6.1 (Object Oriented Programming)
+- electronic books' Chapter TBA
 
 The main idea for this lab is to write a program that will organize Vulnerabilities into a Vulnerability list. The program should have the ability to add / remove / search for vulnerabilities.
 
@@ -43,7 +50,7 @@ We will define the Vulnerability attributes as follows:
 
 You will write a constructor that allows the user to construct a Vulnerability object by passing in values for all of the fields. Your constructor should set these attributes with the value None by default.
 
-* __init__(self, cve, cwe, year)
+* `__init__(self, cve, cwe, year)`
 
 In addition to your constructor, your class definition should also support “setter” methods that can update the state of the Vulnerability objects:
 
