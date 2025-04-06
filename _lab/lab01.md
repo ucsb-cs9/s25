@@ -67,6 +67,7 @@ print(vulnerability2.to_string())
 Output:
 ```
 "CVE-2024-37032" (CWE-20) - 2024
+
 "CVE-2024-3402" (CWE-1426) - 2024
 ```
 
@@ -160,29 +161,33 @@ vulnerabilities.add_vuln(vuln3)
 vulnerabilities.add_vuln(vuln4)
 vulnerabilities.add_vuln(vuln5)
 
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == \
-"CVE-2022-21668" (CWE-400) - 2022
-"CVE-2020-7218" (CWE-400) - 2020)
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == (
+    '"CVE-2022-21668" (CWE-400) - 2022\n'
+    '"CVE-2020-7218" (CWE-400) - 2020'
+)
 
 assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == \
-CVE-2022-21668" (CWE-1284) - 2022
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-20") == ""
-"CVE-2008-1303" (CWE-20) - 2008
-
-# check that the removal is working correctly
-vulnerabilities.remove_cwe("CWE-20")
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == \
-"CVE-2022-21668" (CWE-400) - 2022
-"CVE-2020-7218" (CWE-400) - 2020)
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == \
-CVE-2022-21668" (CWE-1284) - 2022
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-20") == ""
-
-vulnerabilities.remove_cwe("CWE-1284") 
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == ""
-assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == ""
+    '"CVE-2022-21668" (CWE-1284) - 2022'
 assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-20") == \
-"CVE-2008-1303" (CWE-20) - 2008
+    '"CVE-2008-1303" (CWE-20) - 2008'
+
+# Check that the removal is working correctly
+vulnerabilities.remove_cwe("CWE-20")
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == (
+    '"CVE-2022-21668" (CWE-400) - 2022\n'
+    '"CVE-2020-7218" (CWE-400) - 2020'
+)
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == \
+    '"CVE-2022-21668" (CWE-1284) - 2022'
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-20") == ""
+
+vulnerabilities.remove_cwe("CWE-1284")
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == ""
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-400") == (
+    '"CVE-2022-21668" (CWE-400) - 2022\n'
+    '"CVE-2020-7218" (CWE-400) - 2020'
+)
+assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-20") == ""
 
 vulnerabilities.remove_cwe("CWE-400")
 assert vulnerabilities.get_vulnerabilities_by_cwe("CWE-1284") == ""
