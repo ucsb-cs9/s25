@@ -107,7 +107,7 @@ Your code should support the following constructor and methods:
 - `get_vulnerabilities_by_cwe(self, cwe)` - Returns a string of all vulnerabilities of a certain cwe. This string should consist of a collection of strings - one line for each vuln.
   - Since each vuln will be in its own line within a single string, a newline character (\n) should be inserted between each line (if applicable) EXCEPT at the very last line where no newline character should exist.
   - The order of the Vulnerabilities in this string will be dictated by the order of the Vulnerabilities in the VulnDB’s list for the Vulnerabilities cwe.
-  - The Vulnerability `toString()` method should be used when constructing this method’s return string.
+  - The Vulnerability `to_string()` method should be used when constructing this method’s return string.
   - If no Vulnerabilities of the specified cwe exist in the VulnDB, then this method returns an empty string ("").
   - Note: the cwe parameter value may be in either lower / upper case.
 
