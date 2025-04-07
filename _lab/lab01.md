@@ -53,6 +53,9 @@ You will write a constructor that allows the user to construct a Vulnerability o
 * `__init__(self, cve, cwe, year)`
 
 In addition to your constructor, your class definition should also support “setter” methods that can update the state of the Vulnerability objects:
+* `set_cve(self, cve)`
+* `set_cwe(self, cwe)`
+* `set_year(self, year)`
 
 Each Vulnerability object should be able to call a method `to_string()` that you will implement, which returns a str with all the vulnerability attributes EXACTLY as shown (i.e., the string should contain all attributes in the following EXACT format "CVE" (CWE) - YEAR):
 
