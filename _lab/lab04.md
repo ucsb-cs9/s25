@@ -17,14 +17,14 @@ Note: It is important that you start this lab early so you can utilize our offic
 ## From Mazes to Networks: A Cybersecurity Context
 In cybersecurity, penetration testers often need to systematically explore computer networks to identify vulnerabilities. This process can be modeled similarly to solving a maze, where:
 
-Empty spaces (' ') represent accessible network nodes
-Walls ('+') represent inaccessible systems or firewalls
-The goal ('G') represents a high-value target (e.g., a server with sensitive data)
+- Empty spaces (' ') represent accessible network nodes
+- Walls ('+') represent inaccessible systems or firewalls
+- The goal ('G') represents a high-value target (e.g., a server with sensitive data)
 
 Your task is to implement a "network penetration testing simulator" that determines if there's a path from a starting node to a target system, while documenting the traversal path.
 
 ## Representing a Network
-We'll represent a network as an n x m 2D List, similar to how we would represent a maze:
+We'll represent a network as an `n x m` 2D List, similar to how we would represent a maze:
 
 ```
 network = [
@@ -37,11 +37,11 @@ network = [
 ```
 In this representation:
 
-- ' ' - An accessible network node
-- '+' - A firewall or inaccessible system
-- 'G' - The target system we're trying to access
+- `' '` - An accessible network node
+- `'+'` - A firewall or inaccessible system
+- `'G'` - The target system we're trying to access
 
-The position network[x][y] represents a specific node in our network map.
+The position `network[x][y]` represents a specific node in our network map.
 
 ## Traversing the Network
 Your function will need to traverse the network given a starting coordinate. As you traverse, you'll track the number of "hops" (steps) taken and replace the ' ' elements with the step number. This simulates documenting the path of the penetration test.
@@ -52,7 +52,7 @@ When reaching a certain node, you must check and move counterclockwise in the fo
 You will always be given a starting coordinate. This will be the first step taken by the function.
 You will traverse the network until you reach the target ('G'). Once you reach the target, your algorithm can stop.
 
-Using the example network above with a starting position at network[4][4], after your algorithm finishes, the network will have the following updates containing the number of hops:
+Using the example network above with a starting position at `network[4][4]`, after your algorithm finishes, the network will have the following updates containing the number of hops:
 
 ```
 ['+', '+', '+', '+', 'G', '+'],
