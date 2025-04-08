@@ -2,7 +2,7 @@
 num: "Lecture 8"
 desc: ""
 ready: false
-lecture_date: 2025-04-24 15:30:00.00-7:00
+lecture_date: 2025-04-29 15:30:00.00-7:00
 ---
 
 * [Slides folder]({{ site.slides_url }}){:target="_blank"}
