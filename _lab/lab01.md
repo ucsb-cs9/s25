@@ -24,7 +24,7 @@ Note: In general, it is always important to work on labs and reading early so yo
 
 It is a good idea to read up on some tools we’ll use in this lab before you get started, specifically:
 - physical book's Chapter 1.4.2.1 (String Formatting) and 1.4.6 - 1.4.6.1 (Object Oriented Programming)
-- electronic books' Chapter TBA
+- [electronic book](https://runestone.academy/ns/books/published/pythonds/index.html)'s Chapter Chapter 1.9.1. (String Formatting) and 1.13 - 1.13.1, 1.14 - 1.15 (Object Oriented Programming)
 
 The main idea for this lab is to write a program that will organize Vulnerabilities into a Vulnerability list. The program should have the ability to add / remove / search for vulnerabilities.
 
@@ -44,11 +44,11 @@ The `Vulnerability.py` file will contain the definition of a Vulnerability recor
 
 We will define the Vulnerability attributes as follows:
 
-* **CVE** - str that represents the unique CVE identifier of the vulnerability. Your program should ensure this field will be stored as a Python alpha-numeric string, with the same format as is stored in MITRE (two dashes separating three sections of the identifier CVE-2025-31910).  
-* **CWE** - str that represents the MITRE weakness classification of the vulnerability.
-* **year** - int that represents the release year of a vulnerability.
+* **CVE** - `str` that represents the unique CVE identifier of the vulnerability. Your program should ensure this field will be stored as a Python alpha-numeric string (all capital letters), with the same format as is stored in MITRE (two dashes separating three sections of the identifier, e.g., CVE-2025-31910).  
+* **CWE** - `str` that represents the MITRE weakness classification of the vulnerability.
+* **year** - `int` that represents the release year of a vulnerability.
 
-You will write a constructor that allows the user to construct a Vulnerability object by passing in values for all of the fields. Your constructor should set these attributes with the value None by default.
+You will write a constructor that allows the user to construct a Vulnerability object by passing in values for all of the fields. **Your constructor should set these attributes to the value `None` by default.**
 
 * `__init__(self, cve, cwe, year)`
 
