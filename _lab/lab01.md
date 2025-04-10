@@ -132,17 +132,17 @@ you must use assert statements as shown below to test if the vuln objects were i
 
 ```
 assert vulnerabilities.does_vuln_exist(vuln1) == True
-assert vulnerabilities.does_vuln_exist(vuln2) == True
+assert vulnerabilities.does_vuln_exist(vuln2) == False
 assert vulnerabilities.does_vuln_exist(vuln3) == False
 
 vulnerabilities.add_vuln(vuln3)
 assert vulnerabilities.does_vuln_exist(vuln1) == True
-assert vulnerabilities.does_vuln_exist(vuln2) == True
+assert vulnerabilities.does_vuln_exist(vuln2) == False
 assert vulnerabilities.does_vuln_exist(vuln3) == True
 
 vulnerabilities.remove_vuln(vuln1)
 assert vulnerabilities.does_vuln_exist(vuln1) == False
-assert vulnerabilities.does_vuln_exist(vuln2) == True
+assert vulnerabilities.does_vuln_exist(vuln2) == False
 assert vulnerabilities.does_vuln_exist(vuln3) == True
 
 ```
