@@ -4,6 +4,26 @@
 | ----- | ----- | ----- | ----- | ----- |
 | [lab02](https://ucsb-cs9.github.io/s24/lab/lab02/) | false | Protocol Testing | ? | ? |
 
+# Background
+
+## Background: Why Security Protocols Matter
+
+In today's interconnected world, our digital lives—from banking to healthcare to social connections—depend on secure systems. Security protocols are the "guardrails" that protect our sensitive information from malicious actors. When you make an online purchase, check your medical records, or simply log into social media, multiple security protocols work behind the scenes to verify your identity and protect your data.
+
+As cyber threats continue to evolve in sophistication, organizations need robust security frameworks that combine different types of protection. Just as a bank uses multiple security measures (guards, cameras, vaults), digital systems require layered security protocols working together. In this lab, you'll build a simplified model of how security professionals design these integrated protection systems, giving you insight into how the digital world keeps our information safe.
+
+## Understanding Protocol Cost
+
+In cybersecurity, implementing stronger security protocols typically requires more computational resources. The `cost` attribute in our framework represents this computational overhead:
+
+- **What is cost?** Cost measures the computing resources (processing power, memory, time) required to run a security protocol. Higher security generally demands higher computational cost.
+
+- **Why does cost matter?** Organizations must balance security needs against available resources. A military-grade encryption protocol might provide excellent security but could slow down a system if implemented everywhere. Understanding the cost helps security architects make appropriate trade-offs.
+
+- **Real-world example:** A fingerprint authentication might be more secure than a password but requires specialized hardware and more processing power to analyze biometric data—representing a higher "cost" despite better security.
+
+In this lab, we measure cost in abstract "cost units" to simulate how security professionals evaluate the resource requirements of different protection mechanisms.
+
 # Learning Goals
 In this lab, you will create a Security Protocol Testing Framework by utilizing inheritance functionality and defining various Protocol objects and their properties. You'll have the opportunity to practice:
 - Defining a base class and creating an inheritance hierarchy
@@ -26,7 +46,7 @@ Note: on MacOS running Python3, in the Terminal, try using pip3 instead of pip i
 
 If you are running into an error about pip upgrade, remember that you might need to use the pip3 to do that: `pip3 install --upgrade pip`
 
-Windows Installation Guide (created by previous Learning Assistants): Python and Pytest Installation Guide for Windows
+Windows Installation Guide (created by previous Learning Assistants): Python and [Pytest Installation Guide for Windows](https://drive.google.com/file/d/1nPCwIA8cBAkiJ-kOKZFjkOskD94jmWYn/view)
 
 IMPORTANT: when installing Python, make sure to select the checkbox to Add Python 3.x to PATH!
 
@@ -65,11 +85,11 @@ If you are not familiar with the cd command:
 Execution: After you open the terminal and navigate to the lab folder following the steps above, type the following command to run testFile.py using pytest.
 
 On Mac:
-```3 -m pytest testFile.py```
+```python3 -m pytest testFile.py```
 
 
 On Windows:
-``` -m pytest testFile.py```
+```python -m pytest testFile.py```
 
 
 If you see something like this, congratulations! You successfully installed and ran pytest.
