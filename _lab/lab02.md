@@ -70,7 +70,7 @@ In order to run your pytests, you can navigate to your folder where your lab02 c
 
 If you are familiar with the Unix cd command: open the command line and cd to the lab folder.
 
-If you are not familiar with the cd command: 
+If you are not familiar with the cd command:
 - If you are using macOS:
   - copy the path to the folder that contains testFile.py (holding the ALT key as shown here: https://apple.stackexchange.com/questions/317992/is-there-any-way-to-get-the-path-of-a-folder-in-macos)
   - open the command line (the Terminal program)
@@ -159,7 +159,7 @@ Note: The `proto1.info()` return value in the example above does not contain a n
 
 Note: The quotation marks around the returned string in IDLE tell us that the value was returned, not printed, hence the string representation is shown.
 
-Hint: Note that the return string should contain a cost with two decimal places. Use the f-string to show the floating point values with 2 decimal places. 
+Hint: Note that the return string should contain a cost with two decimal places. Use the f-string to show the floating point values with 2 decimal places.
 
 For example:
 ```
@@ -264,6 +264,8 @@ Your Encryption class definition should support the following constructor and me
   - In order to avoid code duplication, you must explicitly utilize the base class' constructor to set the level and cost attributes.
 - `info(self)` - method should override the inherited `info()` method in the Protocol class, and returns a str with the properties of an Encryption object.
   - In order to avoid code duplication, you must explicitly utilize the base class' `info()` method to construct the Encryption object's information.
+- `get_algorithm(self)` - returns the algorithm of the encryption.
+- `update_algorithm(self, new_algorithm)` - updates the algorithm of the encryption.
 
 
 
@@ -290,6 +292,8 @@ Your Authentication class definition should support the following constructor an
   - In order to avoid code duplication, you must explicitly utilize the base class' constructor to set the level and cost attributes.
 - `info(self)` - method that overrides the inherited info method in the Protocol class, and returns a str with the properties of an Authentication object.
   - In order to avoid code duplication, you must explicitly utilize the base class info() method to construct the Authentication object's information.
+- `get_factors(self)` - returns the factors of the authentication.
+- `update_factors(self, new_factors)` - updates the factors of the authentication.
 
 An example of what the return string format of the info method is shown below:
 
@@ -310,6 +314,11 @@ Your SecuritySuite class definition should support the following constructor and
 - `__init__(self)` - constructor that initializes an empty list to the class. Name this list attribute protocols. This list protocols will eventually expand with protocols for the security suite.
 - `add(self, protocol)` - method that will add the protocol parameter to the SecuritySuite's list. The most recently added protocol will be at the end of the list. You may assume the protocol parameter will either be an Encryption or Authentication object.
 - `total(self)` - method that will return a str containing each protocol in the security suite, and the total cost of all protocols in the security suite.
+
+Note: SecuritySuite does not have getters or setters for its `protocol`
+attribute because in this case, we want to discourage others from modifying
+the `protocol` list directly. (i.e. We want others to use our `add` method
+instead of writing something like `get_protocol().append()`.)
 
 An example of what the return string format of the total method is shown below:
 
