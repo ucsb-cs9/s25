@@ -50,7 +50,7 @@ In order to run your pytests, you can navigate to your folder where your lab02 c
 
 If you are familiar with the Unix cd command: open the command line and cd to the lab folder.
 
-If you are not familiar with the cd command: 
+If you are not familiar with the cd command:
 - If you are using macOS:
   - copy the path to the folder that contains testFile.py (holding the ALT key as shown here: https://apple.stackexchange.com/questions/317992/is-there-any-way-to-get-the-path-of-a-folder-in-macos)
   - open the command line (the Terminal program)
@@ -139,7 +139,7 @@ Note: The `proto1.info()` return value in the example above does not contain a n
 
 Note: The quotation marks around the returned string in IDLE tell us that the value was returned, not printed, hence the string representation is shown.
 
-Hint: Note that the return string should contain a cost with two decimal places. Use the f-string to show the floating point values with 2 decimal places. 
+Hint: Note that the return string should contain a cost with two decimal places. Use the f-string to show the floating point values with 2 decimal places.
 
 For example:
 ```
@@ -287,9 +287,9 @@ The `SecuritySuite.py` file will contain the class definition of what a security
 
 Your SecuritySuite class definition should support the following constructor and methods:
 
-- `__init__(self)` - constructor that initializes an empty list to the class. Name this list attribute protocols. This list protocols will eventually expand with protocols for the security suite.
-- `add(self, protocol)` - method that will add the protocol parameter to the SecuritySuite's list. The most recently added protocol will be at the end of the list. You may assume the protocol parameter will either be an Encryption or Authentication object.
-- `total(self)` - method that will return a str containing each protocol in the security suite, and the total cost of all protocols in the security suite.
+- `__init__(self)` - constructor that initializes an empty list to the class. You should name this list attribute `protocols`. `protocols` will eventually expand with protocols for the security suite.
+- `add(self, protocol)` - method that will add the `protocol` parameter to the SecuritySuite's list. The most recently added protocol will be at the end of the list. You may assume the protocol parameter will either be an Encryption or Authentication object.
+- `total(self)` - method that will return a `str` containing both a listing of each protocol in the security suite and the total cost of all protocols in the security suite.
 
 An example of what the return string format of the total method is shown below:
 
@@ -310,9 +310,9 @@ Suite Components:
 Total Cost: 11.50 cost units
 ```
 
-IMPORTANT: be careful with the string formatting in the SecuritySuite class; especially the new line character and the space after the * for every new component.
+IMPORTANT: be careful with the string formatting in the SecuritySuite class; especially the new line character and the space after the `*` for every new component.
 
-An example of what the return string format of the `total()` method when there are no protocols in the Security Suite is shown below:
+An example of what the return string format of the `total()` method when there are no protocols in the SecuritySuite is shown below:
 
 ```
 Suite Components:
