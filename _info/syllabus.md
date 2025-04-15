@@ -50,7 +50,7 @@ Make sure that you read this page carefully and are aware of the course policies
 * If you are registered for another UCSB course that overlaps with this one, you are responsible for any work or material you may miss. If you have a course conflict, you must have specific written permission from **both** instructors to stay enrolled in both courses.  You will not get credit on any work you miss as a result, and we WILL NOT make accommodations.
 * Collaboration is only permitted when specifically allowed for — otherwise, you must do your own work independently (lab assignments must be done independently this quarter).
 * Academic integrity policies will be outlined in the Academic Integrity Contract that you'll need to submit as one of your first assignments. Please refer to it throughout the quarter and do not hesitate to ask us questions if you have any questions regarding whether something is allowed.
-* Attendance and active class participation are highly encouraged. While they are not part of the course grade, we might use your scores on the course activities to round up your grade if at the end of the quarter your score is on the border.
+* Attendance and active class participation are highly encouraged. While they are not part of the course grade, we might use your scores from the lab attendance and/or in-class activities to round up your grade if at the end of the quarter your score is on the border.
 * I recognize that some absences (e.g., minor illnesses, mishaps, etc.) are unavoidable. Litigating whether each of these is "excused" or not isn't a good use of anyone's time, so instead we will drop the lowest two grades from everyone's homework. No lab assignments will be dropped. This way, absences (or failure to submit homework) does not unduly penalize your grade unless it becomes excessive.
 * We will use the [Gradescope system]({{ site.gradescope_url }}) this quarter for lab submissions and homework assignments. The midterm and final exams will be conducted in-person.
 * All regrade requests must be made on Gradescope and will close one week after the assignment grades are distributed back to students (unless specified otherwise in the Gradescope email).
@@ -103,6 +103,8 @@ Your course grade will be determined as follows:
 
 Feel free to double-check that the final exam date and time are correct:
 <https://registrar.sa.ucsb.edu/calendars/calendars-deadlines/final-examinations/winter-final-examination-schedule>
+
+Attendance and active participation are not mandatory and are not part of the official course grade breakdown; however, we might use your scores from the lab attendance and/or in-class activities (e.g., iClicker participation) to round up your grade if at the end of the quarter your score is on the border.
 
 In general, homeworks will be assigned periodically throughout the quarter and should be completed on Gradescope by the due date.
 
@@ -179,6 +181,7 @@ Standard Disclaimer
 This syllabus is as accurate as possible but is subject to change at the instructor's discretion, within the bounds of UC policy.
 
 _Last Updated:_ 
+* Apr 11 - clarified attendance examples to include iClicker
 * Apr 1 - corrected the midterm and the final exam dates
 * Mar 27 - initial live version of the syllabus 
  
