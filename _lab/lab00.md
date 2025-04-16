@@ -270,6 +270,25 @@ Parameters are passed directly into the function call, so there is no need for u
 
 Check that you named your file EXACTLY as was specified - remember that Python is case-sensitive, so **lab00.py** is not the same as **Lab00.py**.
 
+
+### "Autograder failed" error
+
+```
+The autograder failed to execute correctly...
+```
+
+Make sure your files don't have any print statements in them.  The classes should only be returning values, not printing.  testFile.py shouldn't have any output if all the tests pass; it should only produce an AssertionError when something's wrong with the code.
+
+If you are testing your code with print statements, make sure to either add them inside the `if __name__ == "__main__":` block or comment them out before submitting your files to Gradescope.
+
+---
+
+```
+ModuleNotFoundError: No module named ...
+```
+Check that you named your file EXACTLY as was specified - remember that Python is case-sensitive. Additionally, make sure that if you submitted the zip file, you didn't zip the folder: Gradescope expects just the files themselves.
+
+
 ---
 
 As a SecureNet Consulting analyst, your careful attention to detail and ability to read, understand, and follow the instructions will allow you to minimize debugging time.
