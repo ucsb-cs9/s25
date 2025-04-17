@@ -205,14 +205,30 @@ Once you’re done with writing your class definition, submit your `testFile.py`
 If the tests don’t pass, you may get some error message that may or may not be obvious at this point. Don’t worry - if the tests didn’t pass, take a minute to think about what may have caused the error. Check the Troubleshooting guide below. If your tests didn’t pass and you’re still not sure why you’re getting the error, feel free to ask your TAs or Learning Assistants.
 
 # Troubleshooting
+
+```
+The autograder failed to execute correctly...
+```
+
+Make sure your files don't have any print statements in them.  The classes should only be returning values, not printing.  testFile.py shouldn't have any output if all the tests pass; it should only produce an AssertionError when something's wrong with the code.
+
+If you are testing your code with print statements, make sure to either add them inside the `if __name__ == "__main__":` block or comment them out before submitting your files to Gradescope.
+
+---
+
 ```
 ModuleNotFoundError: No module named ...
 ```
-Check that you named your file EXACTLY as was specified - remember that Python is case-sensitive.
+Check that you named your file EXACTLY as was specified - remember that Python is case-sensitive. Additionally, make sure that if you submitted the zip file, you didn't zip the folder: Gradescope expects just the files themselves.
+
+---
 
 ```
 NoneType has no attribute ...
 ```
 Remember that before you can use `.title()` or `.upper()` in your constructor, you need to verify that the parameter is a string instead of None. Use the if/else branches to differentiate between these cases.
+
+---
+
 
 _Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
