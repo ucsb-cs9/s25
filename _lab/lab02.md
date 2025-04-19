@@ -115,6 +115,9 @@ In order to run your pytests, you can navigate to your folder where your lab02 c
 
 If you are familiar with the Unix `cd` command: open the command line and `cd` (change directory) to the lab folder.
 
+**Why do we need to use `cd`?**  
+The `cd` command (short for **change directory**) is used to **tell your computer where to look for the files** you're trying to run. When you use `pytest`, it needs to know where your `testFile.py` and class files like `Protocol.py` are located. If you're not in the correct folder, Python won't be able to find these files, and you'll get errors like `ModuleNotFoundError`.
+
 If you are not familiar with the `cd` command: 
 - If you are using macOS:
   - copy the path to the folder that contains testFile.py (holding the ALT key as shown here: https://apple.stackexchange.com/questions/317992/is-there-any-way-to-get-the-path-of-a-folder-in-macos)
