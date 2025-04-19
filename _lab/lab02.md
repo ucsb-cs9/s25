@@ -109,6 +109,9 @@ There are 2 things you need to do to run a testFile: navigation and execution.
 
 ### Step 3.1: Navigating to the correct folder on the command Line
 
+**Why do we need to use `cd`?**
+The `cd` command (short for **change directory**) is used to **tell your computer where to look for the files** you're trying to run. When you use `pytest`, it needs to know where your `testFile.py` and class files like `Protocol.py` are located. If you're not in the correct folder, Python won't be able to find these files, and you'll get errors like `ModuleNotFoundError`.
+
 Navigation: To run pytests, you will need to "open" your lab02 folder (also referred to as "directory") on the command line.
 
 In order to run your pytests, you can navigate to your folder where your lab02 code is located using the command line interface.
