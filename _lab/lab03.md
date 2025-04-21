@@ -1,11 +1,16 @@
-
-| num | ready? | description | assigned | due |
-| ----- | ----- | ----- | ----- | ----- |
-| [lab03](https://ucsb-cs9.github.io/s25/lab/lab03/) | false | Recursion | ? | ? |
+---
+layout: lab
+num: lab02
+ready: true
+desc: "Solving problems with Recursion"
+assigned: ?
+due: ?
+---
 
 # Learning Goals
+
 In this lab, you’ll practice:
- 
+
 - Writing recursive functions based on a specification.
   - Define a base case (or cases)
   - Design the next smallest input that would trigger a recursive case
@@ -13,7 +18,9 @@ In this lab, you’ll practice:
 - Practice writing pytests to ensure your recursive functions are correct.
 
 ## Cybersecurity Context:
-Recursion is frequently used in cybersecurity applications including password checking, directory traversal, network packet analysis, and cryptographic algorithms. 
+
+Recursion is frequently used in contexts where the problem is well defined and can be divided into smaller, similar subproblems.
+The cybersecurity applications for recursion include security audits, password checking, directory traversal, network packet analysis, and cryptographic algorithms.
 The recursive functions you'll implement in this lab represent simplified versions of real-world cybersecurity operations.
 
 Before you get started, make sure to read up on recursion, specifically Chapter 4.2.
@@ -21,46 +28,96 @@ Before you get started, make sure to read up on recursion, specifically Chapter 
 # Instructions
 
 For this lab, you will need to create two files:
- - `lab03.py` - file containing your solution to all recursive functions you will implement in this lab.
+
+- `lab03.py` - file containing your solution to all recursive functions you will implement in this lab.
 - `testFile.py` - file containing pytest functions testing all recursive functions you will implement in this lab.
   - Note: Gradescope’s autograder requires you to submit your `testFile.py` in order for it to run your code (hopefully you’re practicing TDD and use your tests to check correctness!). Gradescope will also require you to provide all function definitions (even if incorrect) in lab03.py in order to run the tests.
 
 There will be no starter code for this assignment, but rather function descriptions are given in the specification below.
 
-It’s recommended that you organize your lab work in its own directory. This way all files for a lab are located in a single folder. Also, this will be easy to import various files into your code using the import / from technique shown in lecture.
+It’s recommended that you organize your lab work in its own directory.
+This way all files for a lab are located in a single folder.
+Also, this will be easy to import various files into your code using the import / from technique shown in lecture.
 
 ## Recursive function definitions and specifications
-You will write five recursive functions for this lab. Each one is specified below. One example test will be given, but you should write 3 - 5 explicit tests for each function (think of edge cases and various interesting cases when writing your tests!).
 
-Note: You must write each function recursively in order to receive any credit; you may receive a 0 for your implementation, even if Gradescope's tests pass. For this lab, you may not (and need not) define additional helper functions.
+You will write two recursive functions for this lab. Each one is specified below.
+One example test will be given, but you should write 3 - 5 explicit tests for each function (think of edge cases and various interesting cases when writing your tests!).
 
-- `int_division(num, div)` - Simulate a simplified password strength calculation where num represents password complexity score and div represents a security threshold. The parameters num and div are positive integers (you may assume `num` is >= 0 and `div` is > 0). This recursive function recursively returns the quotient (i.e. num // div) without explicitly using the // or / operators, or a pre-defined function. In security terms, this represents how many security thresholds a password passes.
+Note: You must write each function recursively in order to receive any credit; you may receive a 0 for your implementation, even if Gradescope's tests pass.
+For this lab, you may not (and need not) define additional helper functions.
 
-Hint: Think of how you would manually count how many security thresholds (div) your password complexity (num) passes. Each subtraction represents checking against one security criterion.
+1. `find_insecure_configs(config_dict, parent_path="")` - The parameter is a json configuration file and optionally, a parent path.
+This recursive function searches through nested data structures to find insecure configurations and returns a list of nested tuples with (path, value, reason) set for each insecure setting found.
+The criteria to check for are:
+    - `Security feature disabled`: Any boolean value False where the key contains "secure", "encrypt", or "auth"
+    - `Development feature enabled`: Any boolean value True where the key contains "debug" or "test"
+    - `Weak password policy`: Any password minimum length less than 8
 
-```
-# Example test
-assert int_division(27, 4) == 6  # Password with complexity 27 passes 6 security thresholds of value 4
-```
-- `count_vowels(text)` - This recursive function will take a string value (text) representing a network log entry and return the number of vowels (which for this exercise are 'A','E','I','O','U','a','e','i','o','u') that are found in it. In a simplified security model, this could represent identifying certain patterns in log files.
+    An example configuration is shown below:
+    ```
+    # Simple configuration example
+    config = {
+        "server": {
+            "auth": {
+                "require_ssl": False,  # Insecure: SSL disabled
+                "min_password_length": 4  # Insecure: Weak password policy
+            },
+            "debug": True  # Insecure: Debug enabled
+        },
+        "database": {
+            "encrypt_data": False,  # Insecure: Encryption disabled
+            "connection": {
+                "timeout": 30,  # Not insecure
+                "retries": 3    # Not insecure
+            }
+        }
+    }
+    ```
+    To test the recursive function, we could do the following:
+    ```
+    # Example test
+    results = find_insecure_configs(config)
+    assert(('server.debug', True, 'Development feature enabled') in results)
+    ```
 
-Hint: Start with the first character. If it's a vowel (representing a flagged pattern), count one; if not, don't. Either way, proceed to the rest of the string recursively.
+2. `analyze_packet_recursively(packet_data)` - The parameter text is a dictionary.
+This function will check for five malicious patterns and return a list of suspicious elements found in the packet.
 
-```
-# Example test
-assert count_vowels("Access Denied From IP: 192.168.1.1") == 11  # 11 potential patterns detected
-```
+   There are five items to check for:
+    1. Source IP addresses from suspicious ranges (e.g., 192.168.0.0/16 trying to access from outside)
+    2. Unusual port combinations (e.g., connecting to port 3389 from outside)
+    3. Fragmented IP packets (potential evasion technique)
+    4. Suspicious HTTP paths (like containing "../" for path traversal or common attack patterns)
+    5. Unusual user-agent strings
 
-- `reverse_str(text)` - The parameter text is a string. This recursive function will return a string in the reverse order of text, simulating a very basic encoding technique sometimes used in simple security obfuscation. Note that the reverse of an empty string is an empty string.
+    Some examples of tests follow:
 
-Hint: In string encoding, the reverse of all but the first character, followed by the first character, results in the full string reversed. Use this pattern for your recursion.
+    ```
+        # Example test
+        def test_normal_packet():
+            normal_packet = {
+                "ethernet": {"src": "00:11:22:33:44:55", "dst": "66:77:88:99:aa:bb"},
+                "ip": {"src": "10.0.0.1", "dst": "10.0.0.2"},
+                "tcp": {"src_port": 12345, "dst_port": 80}
+            }
+        assert analyze_packet_recursively(normal_packet) == []
 
-```
-# Example test
-assert reverse_str("password123") == "321drowssap"  # Basic encoding of sensitive information
-```
+        def test_suspicious_packet():
+            suspicious_packet = {
+                "ip": {"src": "192.168.1.1", "dst": "8.8.8.8"},
+                "tcp": {"src_port": 12345, "dst_port": 3389}
+                }
 
-- `remove_seq(text, seq)` - The parameters text and seq are strings that contain at least one character. This recursive function will return a string where all occurrences of seq are removed in the order it appears in the string text, simulating detection and removal of suspicious patterns in data. Your solution SHOULD NOT use the string's replace(), index() or find() methods.
+            findings = analyze_packet_recursively(suspicious_packet)
+            assert len(findings) == 2
+            assert any("Private IP" in finding for finding in findings)
+            assert any("sensitive port 3389" in finding for finding in findings)
+    ```
+
+
+
+3. `remove_seq(text, seq)` - The parameters text and seq are strings that contain at least one character. This recursive function will return a string where all occurrences of seq are removed in the order it appears in the string text, simulating detection and removal of suspicious patterns in data. Your solution SHOULD NOT use the string's replace(), index() or find() methods.
 
 Hint: Compare the start of text to seq. If they match, remove seq from text (removing the malicious pattern) and continue recursively without the first part of text. If they don't match, keep the first character of text and continue to check the rest.
 
@@ -92,6 +149,7 @@ These recursive functions demonstrate fundamental concepts that appear in cybers
 While these exercises are simplified versions, they introduce the recursive thinking patterns needed in cybersecurity applications.
 
 ## `testFile.py` pytest
+
 This file will contain unit tests using pytest to test if your functionality is correct. Write your tests first in order to check the correctness of your recursive function. Consider including security-relevant test cases, such as:
 
 - Testing password strength with common password patterns
@@ -109,17 +167,31 @@ Here's the structure for the test file that you can use to get started:
 ```
 # testFile.py
 
-def test_int_division():
-    # from lab03 import int_division
-    # uncomment the above import post completion of function in lab03.py
-    # write your assert statements here
-    pass # remove this after writing asserts
+def find_insecure_configs(config_dict, parent_path=""):
+    """
+    Recursively searches through a nested dictionary (like JSON config)
+    to find insecure configurations.
 
-def test_get_even_ints():
-    # from lab03 import get_even_ints
-    # uncomment the above import post completion of function in lab03.py
-    # write your assert statements here
-    pass # remove this after writing asserts
+    Args:
+        config_dict (dict): Dictionary representing configuration
+        parent_path (str): Path in the config to current position (for recursive calls)
+
+    Returns:
+        list: List of tuples with (path, value) for insecure settings
+
+    Example:
+        >>> config = {
+        ...     "server": {
+        ...         "auth": {"require_ssl": False, "min_password_length": 4},
+        ...         "debug": True
+        ...     },
+        ...     "database": {"encrypt": False}
+        ... }
+        >>> find_insecure_configs(config)
+        [('server.auth.require_ssl', False), ('server.auth.min_password_length', 4),
+         ('server.debug', True), ('database.encrypt', False)]
+    """
+    pass
 
 def test_count_vowels():
     # from lab03 import count_vowels
@@ -139,5 +211,6 @@ def test_remove_seq():
     # write your assert statements here
     pass # remove this after writing asserts
 ```
+
 _Acknowledgment: This lab has been modified in collaboration with [
 (https://github.com/noah-de) to incorporate cybersecurity context._
