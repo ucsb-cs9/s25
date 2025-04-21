@@ -85,10 +85,35 @@ Hints: Think of what your base case could be, test it - what's the simplest case
   - text = 'acb', seq = 'ab'
   - text = 'ab', seq = 'abc'
 
+
+- `locate_files(dir)` - The parameter dir is a dictionary that contains keys that map to either None OR dicts. If the key maps to None, it is a filename, otherwise it is a dictionary that needs to be traversed to extract its contents. The recursive function will return a list of the full paths of each of the files.
+
+```
+# Example test
+files = {"lab00" : {"tests" : {"test.py" : None}, "lab00.py" : None, "README.md" : None}, "lab01" : {"params.txt" : None, "lab01.py" : None}, "base.py" : None }
+assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
+# The files are labelled and put into a list for easy scanning
+```
+
+Use the following code framework to begin with:
+```
+def locate_files(dir):
+  all_files = []
+  for i in dir.keys():
+    # YOUR CODE HERE
+    ...
+
+    all_files.append(i + "/" + "__something_you_returned_here__")
+  return all_files 
+```
+
+Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to all_files? Note, you will always need to append the directory a file is in (its key) to the front of it before adding it to all_files.
+
+
 These recursive functions demonstrate fundamental concepts that appear in cybersecurity:
 
 - Password strength calculations often involve checking against multiple criteria - recursively
-- Port scanning tools recursively check network ports for vulnerabilities
+- Port and file scanning tools recursively check network ports/files for vulnerabilities or malware
 - Pattern detection in log files and data streams often uses recursive parsing - techniques
 - Simple encoding/obfuscation techniques like string reversal are basic security - measures
 - Identifying and removing malicious patterns from code or data is essential in security operations
