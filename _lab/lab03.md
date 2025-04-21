@@ -1,6 +1,11 @@
-| num                                                | ready? | description | assigned | due |
-| -------------------------------------------------- | ------ | ----------- | -------- | --- |
-| [lab03](https://ucsb-cs9.github.io/s25/lab/lab03/) | false  | Recursion   | ?        | ?   |
+---
+layout: lab
+num: lab03
+ready: true
+desc: "Recursion"
+assigned: 2025-04-22 11:00:00.00-7
+due: 2025-04-29 23:59:59.59-7
+---
 
 # Learning Goals
 
