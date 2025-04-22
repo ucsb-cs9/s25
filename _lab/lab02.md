@@ -3,8 +3,8 @@ layout: lab
 num: lab02
 ready: true
 desc: "Protocol Testing - Inheritance"
-assigned: 2024-04-15 11:00:00.00-7
-due: 2024-04-22 23:59:59.59-7
+assigned: 2025-04-15 11:00:00.00-7
+due: 2025-04-22 23:59:59.59-7
 ---
 
 # Building a Security Protocol Testing Framework
