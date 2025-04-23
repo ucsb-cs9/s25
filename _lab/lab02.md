@@ -3,8 +3,8 @@ layout: lab
 num: lab02
 ready: true
 desc: "Protocol Testing - Inheritance"
-assigned: 2024-04-15 11:00:00.00-7
-due: 2024-04-22 23:59:59.59-7
+assigned: 2025-04-15 11:00:00.00-7
+due: 2025-04-22 23:59:59.59-7
 ---
 
 # Building a Security Protocol Testing Framework
@@ -114,6 +114,9 @@ Navigation: To run pytests, you will need to "open" your lab02 folder (also refe
 In order to run your pytests, you can navigate to your folder where your lab02 code is located using the command line interface.
 
 If you are familiar with the Unix `cd` command: open the command line and `cd` (change directory) to the lab folder.
+
+**Why do we need to use `cd`?**  
+The `cd` command (short for **change directory**) is used to **tell your computer where to look for the files** you're trying to run. When you use `pytest`, it needs to know where your `testFile.py` and class files like `Protocol.py` are located. If you're not in the correct folder, Python won't be able to find these files, and you'll get errors like `ModuleNotFoundError`.
 
 If you are not familiar with the `cd` command: 
 - If you are using macOS:
