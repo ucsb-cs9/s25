@@ -86,7 +86,29 @@ Hints: Think of what your base case could be, test it - what's the simplest case
   - text = 'ab', seq = 'abc'
 
 
-- `locate_files(dir)` - The parameter dir is a dictionary that contains keys that map to either None OR dicts. If the key maps to None, it is a filename, otherwise it is a dictionary that needs to be traversed to extract its contents. The recursive function will return a list of the full paths of each of the files.
+- `locate_files(dir)` - Computers use a filesystem to organize files and
+directories on a storage device. Malware scanners, such as an antivirus scanner,
+need to traverse a computer's filesystem to look for suspicious files.
+For this part of the assignment, we will create a function to build a list of
+all files in a simulated filesystem.
+
+
+For this assignment, we will be using nested `dict`s to simulate a computer's
+folder structure.
+The parameter `dir` is a dictionary that represents a filesystem.
+
+
+    - If the entry's value is `None`, the entry represents a file.
+    - Otherwise, if the entry's value is a dictionary, it represents a folder.
+
+
+Like on your computer, folders may be nested inside several levels of folders.
+(This is why this problem lends itself well to recursion.)
+
+
+The function `locate_files` returns a list containing the full paths of each of the files.(The path represents the file's location on the computer. It is the sequence of
+directory names and a file name, each separated by a `/`.)
+
 
 ```
 # Example test
@@ -107,8 +129,11 @@ def locate_files(dir):
   return all_files
 ```
 
-Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to all_files? Note, you will always need to append the directory a file is in (its key) to the front of it before adding it to all_files.
-
+Hint: Your return type will always be the same, so think of how you can build a
+list using the returned value from the recursive call.
+To build up the path, you will always need to prepend the directory's name to
+the names of the files contained within it.
+You must prepend the directory's name before adding the path to `all_files`.
 
 These recursive functions demonstrate fundamental concepts that appear in cybersecurity:
 
