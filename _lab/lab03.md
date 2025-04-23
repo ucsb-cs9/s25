@@ -57,7 +57,7 @@ assert int_division(27, 4) == 6  # Password with complexity 27 passes 6 security
 
 ### Recursive character counting
 
-- `count_vowels(text)` - This recursive function will take a string value (text) representing a network log entry and return the number of vowels that are found in it. For this exercise, the vowels are `'A','E','I','O','U','a','e','I','o','u'`. In a simplified security model, this could represent identifying certain patterns in log files.
+- `count_vowels(text)` - This recursive function will take a string value (text) representing a network log entry and return the number of vowels that are found in it. For this exercise, the vowels are `'A','E','I','O','U','a','e','i','o','u'`. In a simplified security model, this could represent identifying certain patterns in log files.
 
 Hint: Start with the first character of the text. If it's a vowel (representing a flagged pattern), count one; if not, skip counting it. Either way, proceed to the rest of the string recursively (each time, looking at the first character).
 
@@ -135,7 +135,7 @@ def locate_files(dir):
     ...
 
     all_files.append(key + "/" + "__returned_value_from_recursive_call__") # TODO: change __returned_value_from_recursive_call__
-  return all_files 
+  return all_files
 ```
 
 Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to `all_files`? Note, you will always need to include the directory that a file is in (its key) to the front of it before adding it to `all_files`.
@@ -245,6 +245,6 @@ def test_locate_files():
 Congratulations! You are finished with the instructions for this lab and are ready to use recursion for the more involved tasks.
 
 
----	
+---
 
 _Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context. Special thanks to CS9 S25 TAs Michelle Zimmermann and Hitomi Nakayama for incorporating a file location function._
