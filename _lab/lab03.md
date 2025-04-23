@@ -104,7 +104,7 @@ def locate_files(dir):
     ...
 
     all_files.append(i + "/" + "__something_you_returned_here__")
-  return all_files 
+  return all_files
 ```
 
 Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to all_files? Note, you will always need to append the directory a file is in (its key) to the front of it before adding it to all_files.
@@ -159,6 +159,12 @@ def test_reverse_string():
 
 def test_remove_seq():
     # from lab03 import remove_seq
+    # uncomment the above import post completion of function in lab03.py
+    # write your assert statements here
+    pass # remove this after writing asserts
+
+def test_locate_files():
+    # from lab03 import locate_files
     # uncomment the above import post completion of function in lab03.py
     # write your assert statements here
     pass # remove this after writing asserts
