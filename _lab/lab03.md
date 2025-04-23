@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab03
-ready: false
+ready: true
 desc: "Functions calling themselves - Recursion"
 assigned: 2025-04-23 11:00:00.00-7
 due: 2025-04-29 23:59:59.59-7
@@ -126,13 +126,6 @@ files = {
 
 Test your function, making sure that it is returning a list. If the dictionary is empty, the function should return an empty list.
 
-```
-# Example test
-files = {"lab00" : {"tests" : {"test.py" : None}, "lab00.py" : None, "README.md" : None}, "lab01" : {"params.txt" : None, "lab01.py" : None}, "base.py" : None }
-assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
-# The files are labelled and put into a list for easy scanning
-```
-
 Use the following code framework to begin with:
 ```
 def locate_files(dir):
@@ -146,6 +139,42 @@ def locate_files(dir):
 ```
 
 Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to `all_files`? Note, you will always need to include the directory that a file is in (its key) to the front of it before adding it to `all_files`.
+
+
+Build your tests incrementally, slowly increasing the complexity of the input. Make sure that you understand what the return value is supposed to be and how to construct it.
+
+```
+
+lab00_files1 = {
+    "lab00" : {
+        "lab00.py" : None
+        }
+    }
+assert locate_files(lab00_files1) == ... # TODO: complete the return value
+
+
+lab00_files2 = {
+    "lab00" : {
+        "tests" : {
+            "test.py" : None
+            },
+        "lab00.py" : None
+        }
+    }
+assert locate_files(lab00_files2) == ... # TODO: complete the return value
+
+```
+
+If you are having difficulty with completing the assert, use the example below and do not hesitate to ask for help from the staff or post on the forum.
+
+Verify your understanding with this more involved example:
+
+```
+# Example test
+files = {"lab00" : {"tests" : {"test.py" : None}, "lab00.py" : None, "README.md" : None}, "lab01" : {"params.txt" : None, "lab01.py" : None}, "base.py" : None }
+assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
+# The files are labelled and put into a list for easy scanning
+```
 
 ---
 
