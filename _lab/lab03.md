@@ -86,7 +86,7 @@ Hints: Think of what your base case could be, test it - what's the simplest case
   - text = 'ab', seq = 'abc'
 
 
-- `locate_files(dir)` - Computers use a filesystem to organize files and
+- `locate_files(dirs)` - Computers use a filesystem to organize files and
 directories on a storage device. Malware scanners, such as an antivirus scanner,
 need to traverse a computer's filesystem to look for suspicious files.
 For this part of the assignment, we will create a function to build a list of
@@ -95,7 +95,7 @@ all files in a simulated filesystem.
 
 For this assignment, we will be using nested `dict`s to simulate a computer's
 folder structure.
-The parameter `dir` is a dictionary that represents a filesystem.
+The parameter `dirs` is a dictionary that represents a filesystem.
 
 
     - If the entry's value is `None`, the entry represents a file.
@@ -119,9 +119,9 @@ assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/RE
 
 Use the following code framework to begin with:
 ```
-def locate_files(dir):
+def locate_files(dirs):
   all_files = []
-  for i in dir.keys():
+  for i in dirs.keys():
     # YOUR CODE HERE
     ...
 
