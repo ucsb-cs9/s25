@@ -135,7 +135,7 @@ def locate_files(dir):
     ...
 
     all_files.append(key + "/" + "__returned_value_from_recursive_call__") # TODO: change __returned_value_from_recursive_call__
-  return all_files 
+  return all_files
 ```
 
 Hint: Your return type will always be the same, so how can you add the list that you returned from the recursion to `all_files`? Note, you will always need to include the directory that a file is in (its key) to the front of it before adding it to `all_files`.
@@ -172,7 +172,7 @@ Verify your understanding with this more involved example:
 ```
 # Example test
 files = {"lab00" : {"tests" : {"test.py" : None}, "lab00.py" : None, "README.md" : None}, "lab01" : {"params.txt" : None, "lab01.py" : None}, "base.py" : None }
-assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
+assert locate_files(files) == ["lab00/tests/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
 # The files are labelled and put into a list for easy scanning
 ```
 
@@ -245,6 +245,6 @@ def test_locate_files():
 Congratulations! You are finished with the instructions for this lab and are ready to use recursion for the more involved tasks.
 
 
----	
+---
 
 _Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context. Special thanks to CS9 S25 TAs Michelle Zimmermann and Hitomi Nakayama for incorporating a file location function._
