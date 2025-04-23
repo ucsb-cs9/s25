@@ -43,6 +43,9 @@ For each recursive function, you need to write 3 - 5 explicit tests (think of ba
 
 Note: You must write each function **recursively** in order to receive any credit; you may receive a 0 for your implementation, even if Gradescope's tests pass. For this lab, you may not (and need not) define additional helper functions.
 
+
+### Recursive integer division
+
 - `int_division(num, div)` - Simulate a simplified password strength calculation where `num` represents password complexity score and `div` represents a security threshold. The parameters `num` and `div` are positive integers (you may assume `num` is >= 0 and `div` is > 0). This recursive function recursively returns the quotient (i.e. `num // div`) without explicitly using the `//` or `/` operators, or a pre-defined function. In security terms, this represents the number of security thresholds a password passes.
 
 Hint: Think of how you would manually count how many security thresholds (div) your password complexity (num) passes. Each subtraction represents checking against one security criterion.
@@ -51,6 +54,8 @@ Hint: Think of how you would manually count how many security thresholds (div) y
 # Example test
 assert int_division(27, 4) == 6  # Password with complexity 27 passes 6 security thresholds of value 4
 ```
+
+### Recursive character counting
 
 - `count_vowels(text)` - This recursive function will take a string value (text) representing a network log entry and return the number of vowels that are found in it. For this exercise, the vowels are `'A','E','I','O','U','a','e','I','o','u'`. In a simplified security model, this could represent identifying certain patterns in log files.
 
@@ -61,6 +66,8 @@ Hint: Start with the first character of the text. If it's a vowel (representing 
 assert count_vowels("Access Denied From IP: 192.168.1.1") == 7  # 7 potential patterns detected
 ```
 
+### Recursive string reversal
+
 - `reverse_str(text)` - The parameter text is a string. This recursive function will return a string in the reverse order of text, simulating a very basic encoding technique sometimes used in simple security obfuscation. Note that the reverse of an empty string (`''`) is an empty string.
 
 Hint: In string encoding, the reverse of all but the first character, followed by the first character, results in the full string reversed. Use this pattern for your recursion.
@@ -69,6 +76,9 @@ Hint: In string encoding, the reverse of all but the first character, followed b
 # Example test
 assert reverse_str("password123") == "321drowssap"  # Basic encoding of sensitive information
 ```
+
+
+### Recursive pattern detection
 
 - `remove_seq(text, seq)` - The parameters `text` and `seq` are strings that contain at least one character. This recursive function will return a string where all occurrences of `seq` are removed in the order it appears in the string text, simulating detection and removal of suspicious patterns in data. Your solution SHOULD NOT use the string's `.replace()`, `.index()` or `.find()` methods.
 
@@ -91,6 +101,8 @@ Hints: Think of what your base case could be, test it - what's the simplest case
   - text = 'acb', seq = 'ab'
   - text = 'ab', seq = 'abc'
 
+
+### Recursive directory processing
 
 - `locate_files(dir)` - The parameter `dir` is a dictionary that contains keys that map to either `None` OR dicts. If the key maps to `None`, then this key is a filename, otherwise, it is a dictionary that needs to be traversed to extract its contents. The recursive function will return a list of the **full paths** of each of the files.
 
@@ -200,6 +212,8 @@ def test_locate_files():
 
 ```
 
+
+Congratulations! You are finished with the instructions for this lab and are ready to use recursion for the more involved tasks.
 
 
 ---	
