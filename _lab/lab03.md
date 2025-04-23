@@ -172,7 +172,7 @@ Verify your understanding with this more involved example:
 ```
 # Example test
 files = {"lab00" : {"tests" : {"test.py" : None}, "lab00.py" : None, "README.md" : None}, "lab01" : {"params.txt" : None, "lab01.py" : None}, "base.py" : None }
-assert locate_files(files) == ["lab00/test/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
+assert locate_files(files) == ["lab00/tests/test.py", "lab00/lab00.py", "lab00/README.md", "lab01/params.txt", "lab01/lab01.py", "base.py"]
 # The files are labelled and put into a list for easy scanning
 ```
 
