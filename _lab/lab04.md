@@ -1,21 +1,31 @@
 
-
-| num | ready? | description | assigned | due |
-| ----- | ----- | ----- | ----- | ----- |
-| [lab03](https://ucsb-cs9.github.io/s25/lab/lab04/) | false | Recursion2 | ? | ? |
+---
+layout: lab
+num: lab04
+ready: false
+desc: "Recursion 2"
+assigned: 2024-04-01 11:00:00.00-7
+due: 2024-04-08 23:59:59.59-7
+---
 
 # Lab04: Network Penetration Testing Simulation using Stack-Based Traversal
 
 ## Learning Goals
 In this lab, you'll practice:
 
-- Utilizing a Stack to simulate network penetration testing
+- Utilizing a Stack to simulate network path traversal
 - Understanding how traversal algorithms are applied in cybersecurity
-Practice writing pytests to ensure your solution is correct
+- Practice writing [pytests](https://docs.pytest.org/en/stable/) to ensure your solution is correct
 
 Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the week before the deadline if needed!
+
 ## From Mazes to Networks: A Cybersecurity Context
-In cybersecurity, penetration testers often need to systematically explore computer networks to identify vulnerabilities. This process can be modeled similarly to solving a maze, where:
+In the adversarial context of cybersecurity, teams (or military groups) need to access alternate paths to route traffic to a destination as fast as possible while avoiding certain paths that have been compromised or disabled.
+
+Similarly, penetration testers cybersecurity professionals who are hired by corporations to try to identify weaknesses in the digital defenses that safeguard certain digital assets.
+These hackers are paid handsomely to infiltrate the networks of their clients, pointing out security flaws with accompanying recommendations to eliminate the weaknesses.
+
+Both scenarios involve a problem that can be modeled similarly to solving a maze, where:
 
 - Empty spaces (' ') represent accessible network nodes
 - Walls ('+') represent inaccessible systems or firewalls
@@ -44,13 +54,15 @@ In this representation:
 The position `network[x][y]` represents a specific node in our network map.
 
 ## Traversing the Network
-Your function will need to traverse the network given a starting coordinate. As you traverse, you'll track the number of "hops" (steps) taken and replace the ' ' elements with the step number. This simulates documenting the path of the penetration test.
+Your function will need to traverse the network given a starting coordinate.
+As you traverse, you'll track the number of "hops" (steps) taken and replace the ' ' elements with the step number.
+This simulates documenting the path of the penetration test.
 You may traverse the network horizontally and vertically (not diagonally).
 You must implement your traversal in following way:
 
-When reaching a certain node, you must check and move counterclockwise in the following order: North, then West, then South, then East
-You will always be given a starting coordinate. This will be the first step taken by the function.
-You will traverse the network until you reach the target ('G'). Once you reach the target, your algorithm can stop.
+ - When reaching a certain node, you must check and move counterclockwise in the following order: North, then West, then South, then East
+ - You will always be given a starting coordinate. This will be the first step taken by the function.
+ - You will traverse the network until you reach the target ('G'). Once you reach the target, your algorithm can stop.
 
 Using the example network above with a starting position at `network[4][4]`, after your algorithm finishes, the network will have the following updates containing the number of hops:
 
@@ -64,7 +76,9 @@ Using the example network above with a starting position at `network[4][4]`, aft
 ```
 
 ## Utilizing a Stack for Network Traversal
-In penetration testing, we often need to systematically explore all possible paths while keeping track of previously visited nodes. A Stack data structure is perfect for this "backtracking" approach, which is essential when dealing with complex networks.
+In penetration testing, we often need to systematically explore all possible paths while keeping track of previously visited nodes.
+A Stack data structure is perfect for this "backtracking" approach, which is essential when dealing with complex networks.
+
 As you traverse the network, you should:
 
 1. Push visited node coordinates onto the Stack
@@ -82,8 +96,12 @@ For this lab, you will need to create three files:
 3. testFile.py - file containing pytest functions testing if your solution works as expected
 
 ### lab04.py
-This file will contain a single function definition `network_path_exists(network, start_x, start_y)`. The network parameter will be the 2D List network as described above. `start_x` and `start_y` are the starting coordinates used when traversing the network. You may assume that the starting position is valid.
-The `network_path_exists` function will utilize a Stack and update the network elements with the number of hops at each traversed position. It should return `True` if a path exists and the target was reached, and return `False` if no path to the target exists.
+This file will contain a single function definition `network_path_exists(network, start_x, start_y)`.
+The network parameter will be the 2D List network as described above.
+`start_x` and `start_y` are the starting coordinates used when traversing the network.
+You may assume that the starting position is valid.
+The `network_path_exists` function will utilize a Stack and update the network elements with the number of hops at each traversed position.
+It should return `True` if a path exists and the target was reached, and return `False` if no path to the target exists.
 ### Stack.py
 This file will contain a Stack class implementation exactly as the one covered in the book using Python Lists. This should contain a constructor (`__init__`), and the `isEmpty`, `push`, `pop`, `peek`, and `size` methods. Your solution must utilize the Stack data structure to manage the traversal through the network.
 ### testFile.py
@@ -164,7 +182,7 @@ When all 4 directions are blocked (N: firewall, W: firewall, S: already visited,
 ]
 ```
 
-## Troubleshooting Common Security Issues
+## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
 
 1. Initialization Error: Ensure that the starting coordinates (start_x, start_y) are used only once for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking—similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
