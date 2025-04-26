@@ -8,30 +8,36 @@ assigned: 2024-04-01 11:00:00.00-7
 due: 2024-04-08 23:59:59.59-7
 ---
 
-# Lab04: Network Penetration Testing Simulation using Stack-Based Traversal
+# Lab04: Network Path Discovery using Stack-Based Traversal
 
 ## Learning Goals
 In this lab, you'll practice:
-
-- Utilizing a Stack to simulate network path traversal
-- Understanding how traversal algorithms are applied in cybersecurity
+- Utilizing a Stack to simulate network path discovery
+- Understanding how traversal algorithms are applied in networking and cybersecurity
 - Practice writing [pytests](https://docs.pytest.org/en/stable/) to ensure your solution is correct
 
 Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the week before the deadline if needed!
 
-## From Mazes to Networks: A Cybersecurity Context
-In the adversarial context of cybersecurity, teams (or military groups) need to access alternate paths to route traffic to a destination as fast as possible while avoiding certain paths that have been compromised or disabled.
+## Network Path Discovery: Multiple Real-World Applications
 
-Similarly, penetration testers cybersecurity professionals who are hired by corporations to try to identify weaknesses in the digital defenses that safeguard certain digital assets.
-These hackers are paid handsomely to infiltrate the networks of their clients, pointing out security flaws with accompanying recommendations to eliminate the weaknesses.
+### Traditional Networking Context
+In computer networks, routers need to find paths from source to destination while navigating around offline nodes, congested links, or other obstacles. When traditional routing tables fail or need to be rebuilt, algorithms must discover alternate paths to maintain connectivity.
+
+Network engineers also need tools to verify network connectivity - confirming whether a path exists between two points in the network and identifying the specific route packets would take. This is essential for both designing networks and troubleshooting connectivity issues.
+
+### Cybersecurity Context
+This same path-finding problem appears in cybersecurity contexts:
+
+- Military operations may need to identify alternative communication routes when primary channels are compromised
+- Cybersecurity penetration testers (ethical hackers hired to test security) need to discover possible paths through a network to reach sensitive assets
+- Security analysts trace potential attack paths through network infrastructure to identify vulnerabilities before malicious actors can exploit them
 
 Both scenarios involve a problem that can be modeled similarly to solving a maze, where:
-
 - Empty spaces (' ') represent accessible network nodes
-- Walls ('+') represent inaccessible systems or firewalls
-- The goal ('G') represents a high-value target (e.g., a server with sensitive data)
+- Walls ('+') represent inaccessible systems, firewalls, or offline nodes
+- The goal ('G') represents the destination server or high-value target
 
-Your task is to implement a "network penetration testing simulator" that determines if there's a path from a starting node to a target system, while documenting the traversal path.
+Your task is to implement a "network path discovery simulator" that determines if there's a path from a starting node to a destination, while documenting the hop count along the traversal path.
 
 ## Representing a Network
 We'll represent a network as an `n x m` 2D List, similar to how we would represent a maze:
@@ -47,9 +53,9 @@ network = [
 ```
 In this representation:
 
-- `' '` - An accessible network node
-- `'+'` - A firewall or inaccessible system
-- `'G'` - The target system we're trying to access
+- `' '` - An active network node that can relay packets
+- `'+'` - An offline node or blocked connection
+- `'G'` - The destination node we're trying to reach
 
 The position `network[x][y]` represents a specific node in our network map.
 
@@ -75,18 +81,17 @@ Using the example network above with a starting position at `network[4][4]`, aft
 ['+', '+', '+', '+', '+', '+']
 ```
 
-## Utilizing a Stack for Network Traversal
-In penetration testing, we often need to systematically explore all possible paths while keeping track of previously visited nodes.
-A Stack data structure is perfect for this "backtracking" approach, which is essential when dealing with complex networks.
+## Utilizing a Stack for Network Path Discovery
+In both network routing and security analysis, we need to systematically explore all possible paths while keeping track of previously visited nodes.
+A Stack data structure is perfect for this "backtracking" approach, which is essential when dealing with complex networks with multiple potential paths.
 
 As you traverse the network, you should:
-
 1. Push visited node coordinates onto the Stack
 2. Replace the empty space (' ') with the current hop number
 3. Check adjacent nodes in the specified order
 4. If no valid moves exist from current position, pop from the Stack and continue from the previous position
 
-If the Stack becomes empty before reaching the target, this means there is no accessible path to the target system - a valuable security insight!
+If the Stack becomes empty before reaching the destination, this means there is no accessible path to the target node - important information for both network administrators and security professionals!
 
 ## Instructions
 For this lab, you will need to create three files:
@@ -107,15 +112,15 @@ This file will contain a Stack class implementation exactly as the one covered i
 ### testFile.py
 This file will contain unit tests using pytest to test if your `network_path_exists` functionality is correct. You should create various network scenarios (with and without solutions) and check if the traversal is correct. Write at least one test where a solution exists (different than the one provided in these instructions), and another test where a solution does not exist.
 
-## Security Relevance
+## Cross-Disciplinary Relevance
 Understanding traversal algorithms is essential in cybersecurity for:
 
-1. Network mapping and vulnerability assessment
-2. Tracing attack paths and lateral movement possibilities
-3. Identifying isolation or segmentation problems in networks
-4. Developing countermeasures to block possible attack paths
+1. **Networking**: Dynamically discovering routes when static routing tables fail and verifying connectivity between systems
+2. **Cybersecurity**: Identifying potential attack paths through a network and testing network segmentation effectiveness
+3. **Military Communications**: Establishing redundant communication paths in contested environments
+4. **Graph Theory**: Solving reachability problems in directed graphs
 
-By implementing this stack-based traversal algorithm, you're learning a fundamental approach used in security tools that analyze potential attack vectors through networks.
+By implementing this stack-based traversal algorithm, you're learning a fundamental approach used in network analysis tools, routing protocols, and security assessment frameworks that discover and analyze paths through networks.
 
 ## Submission
 Once you're done with writing your class/function definitions and tests, submit your lab04.py, Stack.py and testFile.py files to the Lab04 assignment on Gradescope. There will be various unit tests Gradescope to ensure your code is working correctly based on the specifications given in this lab.
