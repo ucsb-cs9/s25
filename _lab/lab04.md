@@ -50,6 +50,7 @@ network = [
     ['+',' ',' ',' ',' ','+'],
     ['+','+','+','+','+','+'] ]
 ```
+
 In this representation:
 
 - `' '` - An active network node that can relay packets
@@ -163,20 +164,41 @@ If the Stack becomes empty before reaching the destination, this means there is 
 For this lab, you will need to create three files:
 
 1. **Stack.py - file containing your class definition of a Python Stack using Python Lists
-2. lab04.py - file containing your solution to writing the `network_path_exists()` function
-3. testFile.py - file containing pytest functions testing if your solution works as expected
+2. **lab04.py** - file containing your solution to writing the `network_path_exists()` function as described in this writeup
+3. **testFile.py** - file containing pytest functions testing if your solution works as expected
+
 
 ### lab04.py
 This file will contain a single function definition `network_path_exists(network, start_x, start_y)`.
-The network parameter will be the 2D List network as described above.
-`start_x` and `start_y` are the starting coordinates used when traversing the network.
-You may assume that the starting position is valid.
+- The `network` parameter will be the 2D List network as described above.
+- `start_x` and `start_y` are the starting coordinates used when traversing the network.
+- You may assume that the starting position is valid.
+
 The `network_path_exists` function will utilize a Stack and update the network elements with the number of hops at each traversed position.
 It should return `True` if a path exists and the target was reached, and return `False` if no path to the target exists.
+
 ### Stack.py
-This file will contain a Stack class implementation exactly as the one covered in the book using Python Lists. This should contain a constructor (`__init__`), and the `isEmpty`, `push`, `pop`, `peek`, and `size` methods. Your solution must utilize the Stack data structure to manage the traversal through the network.
+This file will contain a `Stack` class implementation exactly as the one covered in the book using Python Lists. This should contain a constructor (`__init__`), and the `isEmpty`, `push`, `pop`, `peek`, and `size` methods. Your solution **must** utilize this Stack data structure to manage the traversal through the network.
+
 ### testFile.py
 This file will contain unit tests using pytest to test if your `network_path_exists` functionality is correct. You should create various network scenarios (with and without solutions) and check if the traversal is correct. Write at least one test where a solution exists (different than the one provided in these instructions), and another test where a solution does not exist.
+
+Remember that testing can help you debug your algorithm and ensure your functionality works as expected. First, check the return value of the function, then verify that the network after the function execution looks as expected. Solving the path through the network on paper can help you write these test cases.
+
+Start with a simple case first and then place the goal in each direction to verify that the traversal happens correctly. For example, given the network configuration below, try the starting point at `(1, 1)` and `(4, 1)` to check that your function can correctly move in a single path. 
+
+```
+network_6x3 = [
+    ['+','+','+'],
+    ['+',' ','+'],
+    ['+','G','+'],
+    ['+',' ','+'],
+    ['+',' ','+'],
+    ['+','+','+'] ]
+```
+
+Then, add another network configuration and check the horizontal directions. Once you are confident that your code works for those cases, begin checking the cases with turns.
+
 
 ## Cross-Disciplinary Relevance
 Understanding traversal algorithms is essential in cybersecurity for:
@@ -189,12 +211,15 @@ Understanding traversal algorithms is essential in cybersecurity for:
 By implementing this stack-based traversal algorithm, you're learning a fundamental approach used in network analysis tools, routing protocols, and security assessment frameworks that discover and analyze paths through networks.
 
 ## Submission
-Once you're done with writing your class/function definitions and tests, submit your lab04.py, Stack.py and testFile.py files to the Lab04 assignment on Gradescope. There will be various unit tests Gradescope to ensure your code is working correctly based on the specifications given in this lab.
-Remove any print statements in your submission as they may interfere with the autograder.
+Once you're done with writing your class/function definitions and tests, submit your files to the Lab04 assignment on Gradescope. There will be various unit tests Gradescope to ensure your code is working correctly based on the specifications given in this lab.
+
+<!--Remove any print statements in your submission as they may interfere with the autograder.-->
+
 
 ## Step-by-Step Network Traversal Process
-To illustrate how our penetration testing algorithm works, let's walk through the following example:
-Let's say the starting network map and stack looks like this: (first step already taken)
+To illustrate how our penetration testing algorithm works, let's walk through the following example.
+
+Let's say the starting network map and the stack looks like this: (first step already taken)
 ```
 [
     ['+', '+', '+', '+', 'G', '+']                  |   |
@@ -205,8 +230,8 @@ Let's say the starting network map and stack looks like this: (first step alread
     ['+', '+', '+', '+', '+', '+']                  |---|
 ]
 ```
-For each step, we check the 4 directions (north, west, south, east) one by one to see if there is an accessible node to explore.
 
+For each step, we check the 4 directions (north, west, south, east) one by one to find the first accessible node to explore.
 ```
 [
     ['+', '+', '+', '+', 'G', '+']                  |   |
@@ -217,8 +242,8 @@ For each step, we check the 4 directions (north, west, south, east) one by one t
     ['+', '+', '+', '+', '+', '+']                  |---|
 ]
 ```
-Since the northern node is accessible, we move to that node and update the network map and the stack accordingly:
 
+Since the northern node is accessible, we move to that node and update the network map and the stack accordingly:
 ```
 [
     ['+', '+', '+', '+', 'G', '+']                  |   |
@@ -229,6 +254,7 @@ Since the northern node is accessible, we move to that node and update the netwo
     ['+', '+', '+', '+', '+', '+']                  |---|
 ]
 ```
+
 Now, from node 2, we check the 4 directions (North, West, South, East) one by one to see if there is an accessible node.
 ```
 [
@@ -240,22 +266,42 @@ Now, from node 2, we check the 4 directions (North, West, South, East) one by on
     ['+', '+', '+', '+', '+', '+']                  |---|
 ]
 ```
-When all 4 directions are blocked (N: firewall, W: firewall, S: already visited, E: firewall), we need to backtrack by popping the stack:
 
+When all 4 directions are blocked (N: firewall, W: firewall, S: already visited, E: firewall), we need to backtrack by popping the stack:
 ```
 [
-    ['+', '+', '+', '+', 'G', '+']                  |   |
-    ['+', ' ', '+', ' ', ' ', '+']                  |   |
-    ['+', ' ', ' ', ' ', '+', '+']                  |   |
-    ['+', ' ', '+', '+',  2 , '+']                  |   | <- pop
-    ['+', ' ', ' ', ' ',  1 , '+'] <- back to node 1|4,4| <- backtrack position
-    ['+', '+', '+', '+', '+', '+']                  |---|
+    ['+', '+', '+', '+', 'G', '+']                     |   |
+    ['+', ' ', '+', ' ', ' ', '+']                     |   |
+    ['+', ' ', ' ', ' ', '+', '+']                     |   |
+    ['+', ' ', '+', '+',  2 , '+']                     |   | <- pop
+    ['+', ' ', ' ', ' ',  1 , '+'] <- back to node 1   |4,4| <- backtrack position
+    ['+', '+', '+', '+', '+', '+']                     |---|
 ]
 ```
+
+You can go back up to the lab instructions and re-read the **Explanation of the steps** section to see how the algorithm can take the ext step after backtracking.
+
+Starting from 1, again, the north has been visited, and since the west is open, we go west:
+
+[
+	['+', '+', '+', '+', 'G', '+']                  |   |
+	['+', ' ', '+', ' ', ' ', '+']                  |   |
+	['+', ' ', ' ', ' ', '+', '+']                  |   |
+	['+', ' ', '+', '+',  2 , '+']                  |4,3| <- keep track of where we are
+	['+', ' ', ' ',  3 ,  1 , '+'] <- now at 3      |4,4|
+	['+', '+', '+', '+', '+', '+']                  |---|
+]
+```
+
+
+If you'd like an additional walkthrough, here's a handwritten explanation of how to approach solving a maze:
+<https://www.loom.com/share/b3323f2125d447dcbc7d18b96e45dda4?sid=092fe2c5-cf90-48fa-ae40-ead8c12c86c7>
+
+
 
 ## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
 
-1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only once for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking—similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
-2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops—just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
+1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only **once** for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking. This issue is similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
+2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops; just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
 3. Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
