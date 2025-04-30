@@ -1,11 +1,10 @@
-
 ---
 layout: lab
 num: lab04
 ready: false
-desc: "Recursion 2"
-assigned: 2024-04-01 11:00:00.00-7
-due: 2024-04-08 23:59:59.59-7
+desc: "Network Path Discovery using Stacks"
+assigned: 2025-04-29 11:00:00.00-7
+due: 2024-05-08 23:59:59.59-7
 ---
 
 # Lab04: Network Path Discovery using Stack-Based Traversal
@@ -33,9 +32,9 @@ This same path-finding problem appears in cybersecurity contexts:
 - Security analysts trace potential attack paths through network infrastructure to identify vulnerabilities before malicious actors can exploit them
 
 Both scenarios involve a problem that can be modeled similarly to solving a maze, where:
-- Empty spaces (' ') represent accessible network nodes
-- Walls ('+') represent inaccessible systems, firewalls, or offline nodes
-- The goal ('G') represents the destination server or high-value target
+- Empty spaces (`' '`) represent accessible network nodes
+- Walls (`'+'`) represent inaccessible systems, firewalls, or offline nodes
+- The goal (`'G'`) represents the destination server or high-value target
 
 Your task is to implement a "network path discovery simulator" that determines if there's a path from a starting node to a destination, while documenting the hop count along the traversal path.
 
@@ -57,20 +56,45 @@ In this representation:
 - `'+'` - An offline node or blocked connection
 - `'G'` - The destination node we're trying to reach
 
-The position `network[x][y]` represents a specific node in our network map.
+In the above example,
+- `network[0]` contains a list, which represents the top row of the network map (containing the destination (`'G'`))
+- Since we're dealing with Python 2D Lists (a Python list where the elements are Python Lists), the indices of the coordinates start with 0.
+- You may assume that a network map will always be enclosed with a border (`'+'`) or the Goal (`'G'`) - there won't be any open spaces along the borders.
+
+The position `network[x][y]` represents a specific node in our network map. 
+- `network[0][0]` represents top left corner of the network
+- `network[0][5]` represents top right corner of the network
+- `network[0][4]` represents the location of the `'G'` node
+
+
+**Note: This layout is different than a traditional cartesian coordinate system. As we move right the _y_ value increases, as we move left the _y_ value decreases, as we move up the _x_ value decreases, and as we move down the _x_ value increases.**
+
+
+If we do reach a part of the network from which we cannot move anywhere, a Stack data structure can help us keep track of coordinates we've visited and allow us to "backtrack" to a certain point.
+
+More context on this specific problem is covered in the book (See **Recursion Chapter 4.6: Exploring a Maze**, or [5.11 in the online book](https://runestone.academy/ns/books/published/pythonds/Recursion/ExploringaMaze.html)). The book explains how this problem can be solved recursively, but in this lab we will not use recursion - rather we will do what recursion does for us and manually keep track of positions visited using our implementation of a Stack data structure.
+
 
 ## Traversing the Network
-Your function will need to traverse the network given a starting coordinate.
-As you traverse, you'll track the number of "hops" (steps) taken and replace the ' ' elements with the step number.
-This simulates documenting the path of the penetration test.
-You may traverse the network horizontally and vertically (not diagonally).
+- Your function will need to traverse the network given a starting coordinate.
+- As you traverse, you'll track the number of "hops" (steps) taken and replace the blank `' '` elements with the step number.
+    - This simulates documenting the path of the penetration test.
+- You may traverse the network horizontally and vertically (not diagonally).
+
 You must implement your traversal in following way:
+ - When reaching a certain node, you must check and move **counterclockwise** in the following order: **North, then West, then South, then East**
+ - You will always be given a starting coordinate. This will be the first step taken by the function (marked with a `1`).
+ - You will traverse the network until you reach the target (`'G'`). Once you reach the target, your algorithm should stop (no need to keep traversing the network)
+	* **Note: in the edge case where the current position is next to the goal, your function should always attempt to move into the space _before_ it checks to see if the position stepped into is the goal.**
 
- - When reaching a certain node, you must check and move counterclockwise in the following order: North, then West, then South, then East
- - You will always be given a starting coordinate. This will be the first step taken by the function.
- - You will traverse the network until you reach the target ('G'). Once you reach the target, your algorithm can stop.
+By following these numbered steps, you can trace how the algorithm was traversing the 2D lists to reach the goal.
 
-Using the example network above with a starting position at `network[4][4]`, after your algorithm finishes, the network will have the following updates containing the number of hops:
+**Note that `'G'` or `'+'` should never be overwritten during the traversal.**
+
+Remember: Lists (and 2D Lists) are mutable, so we should be able to change the network structure as our algorithm progresses and it should keep these changes! 
+
+
+Using the example network above with a starting position at `network[4][4]`, after your algorithm finishes, the network will have the following updates containing the number of hops (see the explanation of the steps below):
 
 ```
 ['+', '+', '+', '+', 'G', '+'],
@@ -81,13 +105,55 @@ Using the example network above with a starting position at `network[4][4]`, aft
 ['+', '+', '+', '+', '+', '+']
 ```
 
+
+This format is great for writing the assertion but
+not too easy on the eyes, so we're providing a helper function below that you can use.
+
+Please use it to debug your code and print out the state of the network in a more user-friendly way:
+
+```
+def print_nodes(network):
+	for row in range(len(network)):
+		for col in range(len(network[0])):
+			print(f"|{network[row][col]:<2}", sep='',end='')
+		print("|")
+```
+
+When we print the initial network, we should get the following format:
+
+```
+|+ |+ |+ |+ |G |+ |
+|+ |  |+ |  |  |+ |
+|+ |  |  |  |+ |+ |
+|+ |  |+ |+ |  |+ |
+|+ |  |  |  |  |+ |
+|+ |+ |+ |+ |+ |+ |
+```
+
+After our algorithm runs, we should get the following format:
+
+```
+|+ |+ |+ |+ |G |+ |
+|+ |8 |+ |11|12|+ |
+|+ |7 |9 |10|+ |+ |
+|+ |6 |+ |+ |2 |+ |
+|+ |5 |4 |3 |1 |+ |
+|+ |+ |+ |+ |+ |+ |
+```
+
+**Explanation of the steps**: 
+Note that our starting coordinate (`network[4][4]`) is the first step we take (and mark the grid with a 1). 
+The algorithm then traverses North (step 2), at which point it can't go any further. For example, in step 2's position (at coordinate `network[3][4]`), it tries to check North (runs into a wall), then West (runs into a wall), then South (already visited), then East (runs into a wall), so it can't continue. At this point, the code needs to "backtrack" to step 1 and check the other counterclockwise directions of `network[4][4]`, so at step 1 it tries to go North (already visited as indicated with step 2), then West, which is open (can continue, so now it takes the 3rd step), and so on. 
+
+
+
 ## Utilizing a Stack for Network Path Discovery
 In both network routing and security analysis, we need to systematically explore all possible paths while keeping track of previously visited nodes.
 A Stack data structure is perfect for this "backtracking" approach, which is essential when dealing with complex networks with multiple potential paths.
 
 As you traverse the network, you should:
 1. Push visited node coordinates onto the Stack
-2. Replace the empty space (' ') with the current hop number
+2. Replace the empty space (`' '`) with the current hop number
 3. Check adjacent nodes in the specified order
 4. If no valid moves exist from current position, pop from the Stack and continue from the previous position
 
@@ -96,8 +162,8 @@ If the Stack becomes empty before reaching the destination, this means there is 
 ## Instructions
 For this lab, you will need to create three files:
 
-1. Stack.py - file containing your class definition of a Python Stack using Python Lists
-2. lab04.py - file containing your solution to writing the network_path_exists function (renamed from maze_path_exists)
+1. **Stack.py - file containing your class definition of a Python Stack using Python Lists
+2. lab04.py - file containing your solution to writing the `network_path_exists()` function
 3. testFile.py - file containing pytest functions testing if your solution works as expected
 
 ### lab04.py
@@ -190,6 +256,6 @@ When all 4 directions are blocked (N: firewall, W: firewall, S: already visited,
 ## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
 
-1. Initialization Error: Ensure that the starting coordinates (start_x, start_y) are used only once for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking—similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
+1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only once for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking—similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
 2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops—just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
 3. Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
