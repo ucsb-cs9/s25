@@ -312,11 +312,11 @@ Starting from 1, again, the north has been visited, and since the west is open, 
 ## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
 
+0. `The autograder failed to execute correctly. Please ensure that your submission is valid. ...` Remove the `print()` statements from your code or place them inside the `if __name__ == "__main__":` block to not interfere with the autograder tests. You want to make sure that the final product that you are delivering does not have any debugging statements when someone is importing your code for testing.
 1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only **once** for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking. This issue is similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
 2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops; just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
 3. Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
 
 ---
-
 
 _Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
