@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab04
-ready: false
+ready: true
 desc: "Network Path Discovery using Stacks"
 assigned: 2025-04-29 11:00:00.00-7
 due: 2024-05-08 23:59:59.59-7
@@ -16,6 +16,14 @@ In this lab, you'll practice:
 - Practice writing [pytests](https://docs.pytest.org/en/stable/) to ensure your solution is correct
 
 Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the week before the deadline if needed!
+
+More context on this specific problem is covered in the book (See **Recursion Chapter 4.6: Exploring a Maze**, or [5.11 in the online book](https://runestone.academy/ns/books/published/pythonds/Recursion/ExploringaMaze.html)). The book explains how this problem can be solved recursively, but in this lab we will not use recursion - rather we will do what recursion does for us and manually keep track of positions visited using our implementation of a Stack data structure.
+
+
+If you'd like an additional walkthrough, here's a 15-minute handwritten video explanation of how to approach solving a maze using an approach from this lab:
+<https://www.loom.com/share/b3323f2125d447dcbc7d18b96e45dda4?sid=092fe2c5-cf90-48fa-ae40-ead8c12c86c7>
+
+
 
 ## Network Path Discovery: Multiple Real-World Applications
 
@@ -73,7 +81,6 @@ The position `network[x][y]` represents a specific node in our network map.
 
 If we do reach a part of the network from which we cannot move anywhere, a Stack data structure can help us keep track of coordinates we've visited and allow us to "backtrack" to a certain point.
 
-More context on this specific problem is covered in the book (See **Recursion Chapter 4.6: Exploring a Maze**, or [5.11 in the online book](https://runestone.academy/ns/books/published/pythonds/Recursion/ExploringaMaze.html)). The book explains how this problem can be solved recursively, but in this lab we will not use recursion - rather we will do what recursion does for us and manually keep track of positions visited using our implementation of a Stack data structure.
 
 
 ## Traversing the Network
@@ -143,9 +150,13 @@ After our algorithm runs, we should get the following format:
 ```
 
 **Explanation of the steps**: 
-Note that our starting coordinate (`network[4][4]`) is the first step we take (and mark the grid with a 1). 
-The algorithm then traverses North (step 2), at which point it can't go any further. For example, in step 2's position (at coordinate `network[3][4]`), it tries to check North (runs into a wall), then West (runs into a wall), then South (already visited), then East (runs into a wall), so it can't continue. At this point, the code needs to "backtrack" to step 1 and check the other counterclockwise directions of `network[4][4]`, so at step 1 it tries to go North (already visited as indicated with step 2), then West, which is open (can continue, so now it takes the 3rd step), and so on. 
+-  Note that our starting coordinate (`network[4][4]`) is the first step we take (and mark the grid with a 1). 
+- The algorithm then traverses North (step 2), at which point it can't go any further.
+  - For example, in step 2's position (at coordinate `network[3][4]`), it tries to check North (runs into a wall), then West (runs into a wall), then South (already visited), then East (runs into a wall), so it can't continue.
+  - At this point, the code needs to "backtrack" to step 1 and check the other counterclockwise directions of `network[4][4]`.
+- Going back to step 1 (by popping step 2 coordinates off the stack), it tries to go North (already visited as indicated with step 2), then West, which is open (can continue, so now it takes the 3rd step), and so on. 
 
+Additional instructions and the visualization of the stack are shown in the **Step-by-Step Network Traversal Process** below (and in the video linked above).
 
 
 ## Utilizing a Stack for Network Path Discovery
@@ -163,7 +174,7 @@ If the Stack becomes empty before reaching the destination, this means there is 
 ## Instructions
 For this lab, you will need to create three files:
 
-1. **Stack.py - file containing your class definition of a Python Stack using Python Lists
+1. **Stack.py** - file containing your class definition of a Python Stack using Python Lists
 2. **lab04.py** - file containing your solution to writing the `network_path_exists()` function as described in this writeup
 3. **testFile.py** - file containing pytest functions testing if your solution works as expected
 
@@ -174,14 +185,14 @@ This file will contain a single function definition `network_path_exists(network
 - `start_x` and `start_y` are the starting coordinates used when traversing the network.
 - You may assume that the starting position is valid.
 
-The `network_path_exists` function will utilize a Stack and update the network elements with the number of hops at each traversed position.
+The `network_path_exists()` function will utilize a Stack and update the network elements with the number of hops at each traversed position.
 It should return `True` if a path exists and the target was reached, and return `False` if no path to the target exists.
 
 ### Stack.py
 This file will contain a `Stack` class implementation exactly as the one covered in the book using Python Lists. This should contain a constructor (`__init__`), and the `isEmpty`, `push`, `pop`, `peek`, and `size` methods. Your solution **must** utilize this Stack data structure to manage the traversal through the network.
 
 ### testFile.py
-This file will contain unit tests using pytest to test if your `network_path_exists` functionality is correct. You should create various network scenarios (with and without solutions) and check if the traversal is correct. Write at least one test where a solution exists (different than the one provided in these instructions), and another test where a solution does not exist.
+This file will contain unit tests using pytest to test if your `network_path_exists()` functionality is correct. You should create various network scenarios (with and without solutions) and check if the traversal is correct. Write at least one test where a solution exists (different than the one provided in these instructions), and another test where a solution does not exist.
 
 Remember that testing can help you debug your algorithm and ensure your functionality works as expected. First, check the return value of the function, then verify that the network after the function execution looks as expected. Solving the path through the network on paper can help you write these test cases.
 
@@ -215,6 +226,8 @@ Once you're done with writing your class/function definitions and tests, submit 
 
 <!--Remove any print statements in your submission as they may interfere with the autograder.-->
 
+
+---
 
 ## Step-by-Step Network Traversal Process
 To illustrate how our penetration testing algorithm works, let's walk through the following example.
@@ -283,6 +296,7 @@ You can go back up to the lab instructions and re-read the **Explanation of the 
 
 Starting from 1, again, the north has been visited, and since the west is open, we go west:
 
+```
 [
 	['+', '+', '+', '+', 'G', '+']                  |   |
 	['+', ' ', '+', ' ', ' ', '+']                  |   |
@@ -293,11 +307,7 @@ Starting from 1, again, the north has been visited, and since the west is open, 
 ]
 ```
 
-
-If you'd like an additional walkthrough, here's a handwritten explanation of how to approach solving a maze:
-<https://www.loom.com/share/b3323f2125d447dcbc7d18b96e45dda4?sid=092fe2c5-cf90-48fa-ae40-ead8c12c86c7>
-
-
+---
 
 ## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
@@ -305,3 +315,8 @@ When implementing your network penetration testing simulation, watch out for the
 1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only **once** for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking. This issue is similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
 2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops; just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
 3. Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
+
+---
+
+
+_Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
