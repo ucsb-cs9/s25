@@ -237,3 +237,5 @@ The programming skills you're developing in this lab extend well beyond just org
 
 These skills create a foundation for modeling real-world relationships in code—whether you're working with financial data, scientific measurements, network traffic, or social connections.
 The ability to structure, manipulate, and search ordered data is fundamental to computational thinking in virtually every professional domain.
+
+<sup>_* Acknowledgment: This lab has been modified in collaboration with Noah Spahn to incorporate cybersecurity context._</sup>
