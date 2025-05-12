@@ -17,10 +17,10 @@ In this lab, you'll practice:
 
 Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the week before the deadline if needed!
 
-More context on this specific problem is covered in the book (See **Recursion Chapter 4.6: Exploring a Maze**, or [5.11 in the online book](https://runestone.academy/ns/books/published/pythonds/Recursion/ExploringaMaze.html)). The book explains how this problem can be solved recursively, but in this lab we will not use recursion - rather we will do what recursion does for us and manually keep track of positions visited using our implementation of a Stack data structure.
+More context on this specific problem is covered in the book (See **Recursion Chapter 4.6: Exploring a Maze**, or [5.11 in the online book](https://runestone.academy/ns/books/published/pythonds/Recursion/ExploringaMaze.html)). The book explains how this problem can be solved recursively, but in this lab we will **_not_ use recursion** - rather we will do what recursion does for us and **manually** keep track of positions visited using our implementation of a Stack data structure.
 
 
-If you'd like an additional walkthrough, here's a 15-minute handwritten video explanation of how to approach solving a maze using an approach from this lab:
+If you'd like an additional walkthrough, here's a 15-minute handwritten video explanation of how to approach solving a maze using the logic from this lab:
 <https://www.loom.com/share/b3323f2125d447dcbc7d18b96e45dda4?sid=092fe2c5-cf90-48fa-ae40-ead8c12c86c7>
 
 
@@ -127,6 +127,8 @@ def print_nodes(network):
 		print("|")
 ```
 
+**Copy this function into your lab file and use it during the development and testing of the algorithm.** Once you are done testing your code, comment-out or remove the printing.
+
 When we print the initial network, we should get the following format:
 
 ```
@@ -224,7 +226,7 @@ By implementing this stack-based traversal algorithm, you're learning a fundamen
 ## Submission
 Once you're done with writing your class/function definitions and tests, submit your files to the Lab04 assignment on Gradescope. There will be various unit tests Gradescope to ensure your code is working correctly based on the specifications given in this lab.
 
-<!--Remove any print statements in your submission as they may interfere with the autograder.-->
+emove any print statements in your submission as they may interfere with the autograder.
 
 
 ---
@@ -312,10 +314,37 @@ Starting from 1, again, the north has been visited, and since the west is open, 
 ## Troubleshooting Common Issues
 When implementing your network penetration testing simulation, watch out for these common issues:
 
-0. `The autograder failed to execute correctly. Please ensure that your submission is valid. ...` Remove the `print()` statements from your code or place them inside the `if __name__ == "__main__":` block to not interfere with the autograder tests. You want to make sure that the final product that you are delivering does not have any debugging statements when someone is importing your code for testing.
-1. Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only **once** for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking. This issue is similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
-2. Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops; just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
-3. Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
+1) `The autograder failed to execute correctly. Please ensure that your submission is valid. ...` Remove the `print()` statements from your code or place them inside the `if __name__ == "__main__":` block to not interfere with the autograder tests. You want to make sure that the final product that you are delivering does not have any debugging statements when someone is importing your code for testing.
+
+   
+2) Initialization Error: Ensure that the starting coordinates `(start_x, start_y)` are used only **once** for initializing the starting position in the network. Incorrectly reusing or modifying these initial coordinates during the traversal can lead to inaccurate path tracking. This issue is similar to how misconfiguring your starting point in a security scan can invalidate your entire assessment.
+
+   
+3) Node Marking: Each node you explore must be immediately marked with the current hop number. This marking is crucial to avoid revisiting nodes and creating infinite loops; just as proper documentation during penetration testing helps avoid redundant work and ensures comprehensive coverage.
+
+
+4) Stack Management: Properly manage the stack by ensuring that only viable paths are pushed onto it and that backtracking is handled correctly by popping the stack when no moves are possible. Poor stack management resembles inefficient penetration testing workflows where potential paths are either missed or redundantly explored.
+
+5) If you run the pytest and all you see is "`collected N items`" without the actual results of those `N` tests, then it means that you have an infinite loop in one of your tests. You need to press `Ctrl + C` to stop it and see that the tests didn't finish running.
+
+```
+python3 -m pytest testFile.py
+======================= test session starts =======================
+platform darwin -- Python 3.13.1, pytest-8.3.5, pluggy-1.5.0
+rootdir: /.../...
+collected 3 items
+
+testFile.py                 
+^C
+
+!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!
+/Users/sunrise/Documents/cs9-s25/lab04/332265328/Stack.py:6: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+===================== no tests ran in 18.89s =====================
+```
+
+**Debugging Recommendation**: Test each test, one at a time (you can just comment-out all other tests). Add the `print_nodes()` function call to your `network_path_exists()` function to check the state of the network on each iteration and to see where the updating of the grid is breaking down.
+
 
 ---
 
