@@ -4,7 +4,7 @@ num: lab05
 ready: true
 desc: "Ordered Linked Lists"
 assigned: 2025-05-07 10:59:59.59-7
-due: 2025-05-14 23:59:59.59-7
+due: 2025-05-13 23:59:59.59-7
 ---
 
 In this lab, you'll have the opportunity to practice:
