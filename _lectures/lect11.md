@@ -57,6 +57,7 @@ assert list3 == []
 
 bubbleSort(list4)
 assert list4 == [1, 3, 5, 6, 7
+```
 
 ### Time Complexity
 
@@ -124,6 +125,7 @@ assert list3 == []
 
 selectionSort(list4)
 assert list4 == [1, 3, 5, 6, 7]
+```
 
 ### Time Complexity
 
@@ -195,6 +197,7 @@ assert list3 == []
 
 insertionSort(list4)
 assert list4 == [1, 3, 5, 6, 7]
+```
 
 ### Time Complexity
 
