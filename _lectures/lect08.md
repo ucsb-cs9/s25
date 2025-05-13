@@ -1,6 +1,6 @@
 ---
 num: "Lecture 8"
-desc: ""
+desc: "Recursion review; Midterm notes"
 ready: false
 lecture_date: 2025-04-29 15:30:00.00-7:00
 ---
@@ -34,13 +34,11 @@ lecture_date: 2025-04-29 15:30:00.00-7:00
 ### 2. The function should move toward the base case with every recursive call.
 - This means the **parameters** passed into the function should change.
 - The argument must get **closer and closer** to the base case.
-- This could involve:
+- This _could_ involve:
   - **Subtracting** from a number
   - **Slicing** a list or string
 
 ### 3. The Function Must Call Itself
 - Recursion involves the function making **a call to itself**.
-- The function continues to call itself until the base case is met.
-
-- starts in one disrection and makes copies of itself
-- 
+- starts in one direction and makes copies of itself
+- The function continues to call itself until the base case is met, then it starts to "unwind" itself by popping off the previous function calls from the call stack.
