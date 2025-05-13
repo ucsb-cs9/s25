@@ -25,9 +25,7 @@ lecture_date: 2025-04-22 15:30:00.00-7:00
 - While the fraction class is easy to understand, the example is slightly harder to understand if you do not run through the example yourself. 
 - Try using [python tutor](https://pythontutor.com/render.html#mode=edit), it is highly recommended and very efficient. It allows you to walk through the steps one at a time and provides a visual as well. 
 
-- Make sure you have a mental picture of what is going on with the 
-- 
-- code before you start coding.
+- Make sure you have a mental picture of what is going on with the code before you start coding.
 - This will provide you with a much better understanding when jumping into the labs.
 
 
@@ -79,11 +77,4 @@ lecture_date: 2025-04-22 15:30:00.00-7:00
 - How do we compare two objects by the year _in addition to the name_?
   - Student answered: Use `(this == this) and (this == this)` meaning `return self.name == other.name and self.year == other.year`
   - `other` has to be an object of the same class or python will throw an attribute error
-  - 
-
-
-
-
-
-
-
+ 
