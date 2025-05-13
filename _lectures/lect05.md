@@ -8,12 +8,14 @@ lecture_date: 2025-04-17 15:30:00.00-7:00
 * [Slides folder]({{ site.slides_url }}){:target="_blank"}
 
 ---
+
 # Student Questions
 * Does overloading and overwriting mean the same thing?
     - In this class, yes.
     - In Python, you can simulate overloading a function to work with different parameters, but redefining a function with the same name will overwrite the original function. (Function polymorphism is "overloading")
 
 * Why should we write assertion tests?
+
     - In order to make sure our code runs properly and that it produces the output we want it to.
     - Writing tests concurrently allows us to define the expected behavior of our code and better understand what the behavior is supposed to be.
     - We can catch our bugs earlier if we write tests along with our code.
@@ -23,9 +25,11 @@ lecture_date: 2025-04-17 15:30:00.00-7:00
     - Py-test tells us all of the different tests that failed instead of just stopping at the first failed assert statement.
     - Its output provides us with the value that the function returned (instead of needing to look it up ourselves)
 
+
 ### Square and Rectangle Example
 
 # Creating Square, a subclass of Rectangle
+
 ```
 class Square(Rectangle):
     def __init__(self, side):
@@ -67,6 +71,7 @@ through `super().__init__(side, side)`.
 * However, because Square inherits from Rectangle, there is a link between them where the child class (Square) has access to everything that the parent class (Rectangle) has.
 * The Square class and the Rectangle class are defined independently at the same indentation level and they are stored separately as individual classes.
 * Inheritance connection that allows the child class to use and extend the properties and behavior of the parent class (**IS-A** relationship: Square IS A Rectangle).
+
   
 
 # In-class Instructions

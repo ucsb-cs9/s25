@@ -20,6 +20,7 @@ lecture_date: 2025-04-22 15:30:00.00-7:00
 
 - The inheritance section of the textbook explains that it allows us to use the methods of a parents class.
 - We need to visualize and understand where python will jump in its execution.
+
   
 - While the fraction class is easy to understand, the example is slightly harder to understand if you do not run through the example yourself. 
 - Try using [python tutor](https://pythontutor.com/render.html#mode=edit), it is highly recommended and very efficient. It allows you to walk through the steps one at a time and provides a visual as well. 
@@ -32,6 +33,7 @@ lecture_date: 2025-04-22 15:30:00.00-7:00
 
 - Any other attributes?
   - Perm number, distance from campus.
+
 
 - What does it mean to have a standard method? 
   - `__str__` is a standard methods provided to you by python. 
@@ -75,10 +77,4 @@ lecture_date: 2025-04-22 15:30:00.00-7:00
 - How do we compare two objects by the year _in addition to the name_?
   - Student answered: Use `(this == this) and (this == this)` meaning `return self.name == other.name and self.year == other.year`
   - `other` has to be an object of the same class or python will throw an attribute error
-
-
-
-
-
-
-
+ 

@@ -22,6 +22,7 @@ lecture_date: 2025-04-15 15:30:00.00-7:00
 
 Sometimes in default python, if we are converting a string to interger we use `int()` but there is also a way if we have the string object name of a string variable. Calling a method on a string object to convert it.
 
+
 How are they defined when creating new class?
 
 When we create our own class and define methods that are specific to that class, those methods are written inside the body of the class and can only be accessed through an object of that class using dot notation.
@@ -66,8 +67,10 @@ Methods always have `self` as the first parameter because it refers to the speci
 
 Use a debugging trick in f-strings, if you put equal `=` python will print name of attribute, the `=`, and then automatically include the value that corresponds to that variable. 
 
+
 We are not overwriting the print, we are overwriting the method that takes the content of the data type and turning it to a string. 
 We took the str function that is built into python and told it what we want it to do. 
+
 
 * Student Question: Is that function inside the print function? 
 When I give some object to the print function, it needs to be converted to a string. Then, it uses what the string method `__str__(self)` is supposed to do with that object and displays it to the user.
@@ -93,6 +96,7 @@ If I remove the constructor completely, we haven’t overwritten the constructor
 * "Super student"
 
 * What happens when we call `Student()` and put multiple parameters? Putting more into the function that python expects.
+
 It will return a type error and say it only expected however many parameters.
 
 
