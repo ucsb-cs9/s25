@@ -4,7 +4,7 @@ num: lab06
 ready: true
 desc: "Sorting Apartments"
 assigned: 2024-05-14 23:59:59.59-7
-due: 2024-05-21 23:59:59.59-7
+due: 2024-05-20 23:59:59.59-7
 ---
 
 # Introduction
@@ -89,6 +89,21 @@ print(a0.get_apartment_details())
 [https://www.geeksforgeeks.org/operator-overloading-in-python/](https://www.geeksforgeeks.org/operator-overloading-in-python/)
 
 
+## A Brief Note on Sorting Apartments
+
+A common question that students have when working through this lab is
+
+*The directions say that a0 < a1 should return true if apartment a0 is a better apartment than a1. Intuitively though, why would the apartment that is lesser (<) be "better than" the other apartment?*
+
+Recall that you are sorting apartments in ascending order. For example, if you sorted runners in a race by the position they finished in you would do something like this:
+```
+ 1 4 3 2 5 —> 1 2 3 4 5
+```
+
+It is clear that 1<2, 2<3 etc. Notice that the 1st place runner finished in a “better” position even though they have a “lesser” position than the others. The same concept applies here to apartments.
+
+
+
 # `lab06.py`
 
 This file will contain functions that sort a list of Apartment objects, ensures that the list of Apartment objects are in asending order (best-to-worst), retrives information about the best/worst apartments, and gets the info of every affordable apartment in the list. These function defintions as well as their descriptions are provided below. Note that in order for the autograder to correctly check your implementation, function defintions must match exactly.
@@ -97,8 +112,20 @@ This file will contain functions that sort a list of Apartment objects, ensures 
 * `ensure_sorted_ascending(apartmentList)` - method that returns a boolean value. True if the apartmentList is sorted correctly in asending order. False otherwise.
 * `get_best_apartment(apartmentList)` - method that returns a string detailing the **best** Apartment's rent, meters from UCSB, and condition. Make use of `get_apartment_details(self)` and `merge_sort(apartmentList)`. You can assume that apartmentList has at least one apartment.
 * `get_worst_apartment(apartmentList)` - method that returns a string detailing the **worst** Apartment's rent, meters from UCSB, and condition. Make use of `get_apartment_details(self)` and `merge_sort(apartmentList)`. You can assume that apartmentList has at least one apartment.
-* `get_affordable_apartments(apartmentList, budget)` - method that returns a labeled, newline separated string detailing the rent, meters from UCSB, and condition of **all** the apartments **whose rent is less than or equal to `budget`** from the apartmentList **in sorted order**. Make use of *get_apartment_details(self)* and *merge_sort(apartmentList)*.
+* `get_affordable_apartments(apartmentList, budget)` - method that returns a labeled, newline separated string detailing the rent, meters from UCSB, and condition of **all** the apartments **whose rent is less than or equal to `budget`** from the apartmentList **in sorted order**. Make use of `get_apartment_details(self)` and `merge_sort(apartmentList)`.
 **Note:** You can assume that apartmentList has at least one apartment and that there is no newline at the end of the string returned by this method. If there are no apartments that are affordable in the apartmentList, this method returns an empty string.
+
+# How to Best Approach This Lab
+
+There are a lot of parts to this lab that rely on one another. So if you're failing a test and find yourself stuck it might be because of code that you've written elsewhere. To alleviate some of this stress, here are the suggested order in which you complete the functions required for this lab:
+
+1. constructor and getters in `Apartment.py`
+2. `get_apartment_details` in `Apartment.py`
+3. `<`, `>`, and `==` overloaded operators in `Apartment.py`
+3. `ensure_sorted_ascending` in `lab06.py`
+4. `merge_sort` in `lab06.py`
+5. `get_best_apartment` and `get_worst_apartment` in `lab06.py`
+6. `get_affordable_apartments` in `lab06.py`
 
 # Sample Output 1
 
@@ -200,18 +227,6 @@ All apartments whose rent is <= in SORTED order:
 (Apartment) Rent: $950, Distance From UCSB: 215m, Condition: average
 ```
 
-# A Brief Note on Sorting Apartments
-
-A common question that students have when working through this lab is
-
-*The directions say that a0 < a1 should return true if apartment a0 is a better apartment than a1. Intuitively though, why would the apartment that is lesser (<) be "better than" the other apartment?*
-
-Recall that you are sorting apartments in ascending order. For example, if you sorted runners in a race by the position they finished in you would do something like this:
-
- 1 4 3 2 5 —> 1 2 3 4 5
-
-It is clear that 1<2, 2<3 etc. Notice that the 1st place runner finished in a “better” position even though they have a “lesser” position than the others. The same concept applies here to apartments.
-
 
 # Cross-Domain Applications
 This lab develops fundamental skills valuable across multiple disciplines. For example:
@@ -221,17 +236,6 @@ This lab develops fundamental skills valuable across multiple disciplines. For e
 
 These programming fundamentals enable students to handle complex, multi-attribute data analysis challenges essential in research and industry applications across diverse fields.
 
-# How to Best Approach This Lab
-
-There are a lot of parts to this lab that rely on one another. So if you're failing a test and find yourself stuck it might be because of code that you've written elsewhere. To alleviate some of this stress, here are the suggested order in which you complete the functions required for this lab:
-
-1. constructor and getters in `Apartment.py`
-2. `get_apartment_details` in `Apartment.py`
-3. `<`, `>`, and `==` overloaded operators in `Apartment.py`
-3. `ensure_sorted_ascending` in `lab06.py`
-4. `merge_sort` in `lab06.py`
-5. `get_best_apartment` and `get_worst_apartment` in `lab06.py`
-6. `get_affordable_apartments` in `lab06.py`
 
 ## testFile.py pytest
 
@@ -242,5 +246,7 @@ This file should import your `Apartment.py` class and your `lab06.py` function. 
 Once you're done with writing your recursive function definitions and tests, submit your `Apartment.py` and `lab06.py` to the `Lab06` assignment on Gradescope. There will be various unit tests Gradescope will run to ensure your code is working correctly based on the specifications given in this lab. There also will be tests to ensure that your mergesort in `lab06.py` runs in **O(n log n)** time. Note that if your autograder seems to be running for a really long time, your mergesort does not run O(NlogN).
 
 If the tests don't pass, you may get some error message that may or may not be obvious at this point. Don't worry - if the tests didn't pass, take a minute to think about what may have caused the error. If your tests didn't pass and you're still not sure why you're getting the error, feel free to ask your TAs or Learning Assistants.
+
+---
 
 <sup>_* Acknowledgment: This lab has been modified in collaboration with Noah Spahn to incorporate cybersecurity context._</sup>
