@@ -306,4 +306,4 @@ By mastering these concepts, you're gaining skills valuable for interdisciplinar
 
 ---
 
-_Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
+<sup>_* Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
