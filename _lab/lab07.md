@@ -303,3 +303,7 @@ In chemistry, these concepts help [simulate how molecules interact over time](ht
 Math students utilize heap data structures like you're implementing to solve problems involving the [shortest path between points](https://medium.com/@josephcardillo/dijkstras-algorithm-and-google-maps-b6fc53b01c0a) and to model situations where events happen in sequence.
 Even in sociology, these [programming patterns help researchers understand social networks](https://www.sciencedirect.com/topics/computer-science/social-network-analysis) (like friend groups), organize people into demographic categories, and make sense of complex survey responses.
 By mastering these concepts, you're gaining skills valuable for interdisciplinary work where organizing data, processing things in order of priority, and modeling relationships between objects are important.
+
+---
+
+_Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
