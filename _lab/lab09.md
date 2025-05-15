@@ -368,4 +368,4 @@ For more on BSTs in scientific computing, you can about the [use of tree structu
 
 ---
 
-<sup>_* Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
+<sup>_* Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
