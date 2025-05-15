@@ -136,24 +136,6 @@ def mergeSort(alist):
 
 ---
 
-### Pytest
-
-```python
-def test_mergeSort():
-    lists = [
-        [9,8,7,6,5,4,3,2,1],
-        [1,2,3,4,5,6,7,8,9],
-        [],
-        [1,9,2,8,3,7,4,6,5],
-        [5,4,6,3,7,2,8,1,9]
-    ]
-    for lst in lists:
-        mergeSort(lst)
-        assert lst == sorted(lst)
-```
-
----
-
 **Question:** Is the base of the log in O(log n) equal to 2 because we split into two parts?  
 **Answer:** Yes. The base of the logarithm reflects the number of partitions. If you split into 3 parts, it would be log base 3.
 
