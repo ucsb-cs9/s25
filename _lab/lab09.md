@@ -365,3 +365,7 @@ Mathematicians apply BSTs in computational geometry for point location problems.
 Even sociologists benefit from these structures when analyzing temporal social network data or organizing demographic information.
 The core skill of efficiently managing ordered data with insert, lookup, and delete operations is fundamental across disciplines that deal with hierarchical or time-series data.
 For more on BSTs in scientific computing, you can about the [use of tree structures for processing files](https://dl.acm.org/doi/10.1145/357980.357987) or read this recent article on [An Experimental Comparison of Tree-data Structures for Connectivity Queries on Fully-dynamic Undirected Graphs](https://dl.acm.org/doi/10.1145/3709660).
+
+---
+
+_Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
