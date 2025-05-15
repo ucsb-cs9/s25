@@ -408,3 +408,7 @@ Once you're done with writing your class definitions and tests, submit the follo
 There will be various unit tests Gradescope will run to ensure your code is working correctly based on the specifications given in this lab.
 
 If the tests don't pass, you may get some error message that may or may not be obvious at this point. Don't worry - if the tests didn't pass, take a minute to think about what may have caused the error. If your tests didn't pass and you're still not sure why you're getting the error, feel free to ask your TAs or Learning Assistants or post the error on Piazza.
+
+---
+
+_Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._
