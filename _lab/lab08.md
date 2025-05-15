@@ -411,4 +411,5 @@ If the tests don't pass, you may get some error message that may or may not be o
 
 ---
 
-<sup>_* Acknowledgment: This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
+<sup>_* Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
+
