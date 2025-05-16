@@ -9,7 +9,6 @@ lecture_date: 2025-05-15 15:30:00.00-7:00
 
 ---
 
----
 # Lecture 12
 
 ## Questions Asked Before Class
@@ -84,8 +83,6 @@ Merge Sort is a **divide and conquer** algorithm:
 
 We’ve also discussed Bubble, Selection, and Insertion Sort – all O(n²) algorithms. Merge Sort improves this to **O(n log n)**.
 
----
-
 ### Implementation
 
 ```python
@@ -120,8 +117,6 @@ def mergeSort(alist):
             k += 1
 ```
 
----
-
 **Question:** Is the base of the log in O(log n) equal to 2 because we split into two parts?  
 **Answer:** Yes. The base of the logarithm reflects the number of partitions. If you split into 3 parts, it would be log base 3.
 
@@ -150,3 +145,5 @@ def mergeSort(alist):
 **Disadvantages:**
 - Requires O(n) additional memory
 - Not in-place (unlike quicksort or insertion sort)
+
+---
