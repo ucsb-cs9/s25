@@ -140,7 +140,6 @@ def mergeSort(alist):
 **Advantages:**
 - Stable sort
 - Always O(n log n), even in the worst case
-- Good for linked lists
 
 **Disadvantages:**
 - Requires O(n) additional memory
