@@ -22,7 +22,9 @@ More info: [Timsort Wikipedia](https://en.wikipedia.org/wiki/Timsort)
 
 ---
 
-## Linked Lists
+## Linked List Review
+
+### Linked List Class and Node Class
 
 **Question:** Are the linked list node and linked list object like the BookCollection and BookCollectionNode in the lab?  
 **Answer:** Yes, the lab was applying these concepts in a more specific context. The `BookCollection` class essentially held `BookCollectionNode` objects, similar to a linked list holding its nodes.
@@ -32,7 +34,7 @@ More info: [Timsort Wikipedia](https://en.wikipedia.org/wiki/Timsort)
 **Question:** In lab, we used a dictionary to index CVEs for fast lookup. With linked lists, we had to traverse the entire list. What are the tradeoffs?  
 **Answer:** Dictionaries provide fast O(1) average-case lookup due to hashing, but they require keys to be immutable and memory to be contiguous. Linked lists allow for dynamic memory usage and can be more flexible in certain structural scenarios, like maintaining insertion order or frequent insertions/deletions.
 
-## Adding Nodes to a Linked List
+### Adding Nodes to a Linked List
 
 ```python
 def prepend(self, new_node):
@@ -43,7 +45,7 @@ def prepend(self, new_node):
 **Question:** Is it important to set the “next” attribute of the new node before making it the head?  
 **Answer:** Yes, otherwise the rest of the linked list would be lost when the head is overwritten.
 
-## Ordered vs Unordered Linked Lists
+### Ordered vs Unordered Linked Lists
 
 - Unordered: Nodes are inserted without concern for value order, typically at the start.
 - Ordered: Nodes are inserted in a specific order and require comparison operations to find the correct position.
@@ -51,7 +53,7 @@ def prepend(self, new_node):
 **Question:** Do visual representations of ordered and unordered linked lists differ?  
 **Answer:** No, they look the same visually; the key difference lies in their methods.
 
-## Removing Nodes from Linked Lists
+### Removing Nodes from Linked Lists
 
 **Question:** What were the different approaches for removing a node (like an author) in Lab 5?  
 **Answer:** One method used a `previous` pointer that follows `current`. Another approach fixed `previous` at the node before the one to remove and did more relinking.
@@ -59,7 +61,7 @@ def prepend(self, new_node):
 **Question:** Would those two approaches have different time complexities?  
 **Answer:** No, both require O(n) time to find the node, plus a constant amount of work to remove it.
 
-## Adding Node After the Head
+### Adding Node After the Head
 
 ```python
 if previous is not None:
