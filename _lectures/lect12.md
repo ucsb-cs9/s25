@@ -15,7 +15,7 @@ lecture_date: 2025-05-15 15:30:00.00-7:00
 ## What sorting method does Python use?
 
 **Question:** What sorting method does Python use?  
-**Answer:** Python uses a combination of merge sort and quicksort, specifically an algorithm called Timsort with a Powersort merge policy.  
+**Answer:** Python uses a combination of merge sort and insertion sort, specifically an algorithm called Timsort with a Powersort merge policy.  
 More info: [Timsort Wikipedia](https://en.wikipedia.org/wiki/Timsort)
 
 ---
@@ -172,9 +172,3 @@ def mergeSort(alist):
 **Disadvantages:**
 - Requires O(n) additional memory
 - Not in-place (unlike quicksort or insertion sort)
-
----
-
-### Visualization Resource
-
-https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/visualize/
