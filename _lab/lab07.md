@@ -3,8 +3,8 @@ layout: lab
 num: lab07
 ready: true
 desc: "Apartment Listing Manager"
-assigned: 2024-05-21 23:59:59.59-7
-due: 2024-05-28 23:59:59.59-7
+assigned: 2024-05-20 23:59:59.59-7
+due: 2024-05-27 23:59:59.59-7
 ---
 
 # Learning Goals
@@ -29,9 +29,11 @@ You will also write pytests in `testFile.py` illustrating your behavior works co
 ## Cybersecurity Context
 The skills developed in this lab directly translate to real-world cybersecurity applications.
 The MinHeap priority queue you're implementing mirrors how security incident response systems use [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) to prioritize and process threats based on severity and timestamp, ensuring critical vulnerabilities are addressed first.
-For example, the [MITRE ATT&CK Framework](https://attack.mitre.org/) is the Industry-standard for categorizing cyber threats using object-oriented principles
-Your implementation of `inheritance` and `polymorphism` - will reflect how security frameworks categorize and respond to different types of threats through a unified interface.
+For example, the [MITRE ATT&CK Framework](https://attack.mitre.org/) is the Industry-standard for categorizing cyber threats using object-oriented principles. 
+
+Your implementation of _inheritance_ and _polymorphism_ will reflect how security frameworks categorize and respond to different types of threats through a unified interface.
 Your implementation of _getters_ and _setters_ demonstrates core security concepts like data encapsulation and controlled access, which are vital for maintaining data integrity and preventing unauthorized modifications. Finally, the `pytest` testing methodology parallels security testing practices where systems are rigorously evaluated against normal operations, edge cases, and potential vulnerabilities, just like they do in the [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/).
+
 These programming patterns and structures are foundational in designing secure systems that effectively monitor, prioritize, and respond to security events in real-world cybersecurity operations.
 
 
@@ -53,8 +55,8 @@ You should organize your lab work in its own directory. This way all files for a
 
 The `Apartment.py` file will contain the definition of a Apartment base class. We will define the Apartment attributes as follows:
 
-* `price` - float that represents the price of an apartment. Since the price will be defined by what type of apartment is lsited, we can simply create the price field and initialize it to 0.0
-* `view` - str that describes the type of view available from the apartment. For simplicity, we can have three valid apartment views and label these with `"C"` for city view, `"P"` for park view, and `"L"` for lake view
+* `price` - float that represents the price of an apartment. Since the price will be defined by what type of apartment is listed, we can simply create the price field and initialize it to 0.0.
+* `view` - str that describes the type of view available from the apartment. For simplicity, we can have three valid apartment views and label these with `"C"` for city view, `"P"` for park view, and `"L"` for lake view.
 
 You should write a constructor that allows the user to construct an Apartment object by passing in values for the view. Your constructor should also create a price attribute and set it to 0.0.
 
@@ -74,7 +76,7 @@ Your Apartment class definition should also support the "getter" and "setter" me
 2. `FamilyApartment` that has already been pre-configured and has a fixed price based on its view
 
 ## StudioApartment.py
-Your `StudioApartment` class definition will be defined in `StudioApartment.py`. The `StudioApartment` class will contain a constructor that takes in the view of the Apartment, and should use this view to call our base class' constructor. In addition to the view, it will initialize an amenities list represented as a Python List.
+The `StudioApartment` class will contain a constructor that takes in the view of the Apartment, and should use this view to call our base class' constructor. In addition to the view, it will initialize an amenities list represented as a Python List.
 
 The price of a StudioApartment is defined by two things:
 1. the view of the apartment
@@ -96,7 +98,7 @@ Since we now know that the price of an apartment should be based on the view, th
 
 There are two more methods this class should support:
 
-* `add_amenity(self, amenity)` - this method will add to the amenities list and update its price appropriately. The amenity parameter is represented as a `str` type
+* `add_amenity(self, amenity)` - this method will add to the amenities list and update its price appropriately. The amenity parameter is represented as a `str` type.
 
 * `get_apartment_details(self)` - this method will construct and return a string containing the details of the `StudioApartment` object including the view, amenties, and price of the `StudioApartment`. An example (with escape characters shown for formatting) is given below. When constructing your string, please follow the **EXACT** format since this is what Gradescope will expect.
 
@@ -114,7 +116,7 @@ Price: $1200.00
 """
 ```
 
-`StudioApartment` with a list of amenities example (note that each amenity will be indented with a tab):
+`StudioApartment` with a list of amenities example (note that each amenity will be indented with a tab, followed by a `+` sign):
 
 ```python
 sa1 = StudioApartment("L")
@@ -165,7 +167,7 @@ Price: $2500.00
 
 The `ApartmentListing` class will be defined in `ApartmentListing.py`. This class will keep track of various apartments for a single listing. The `ApartmentListing` class will have the following attributes:
 
-* `apartments` - a Python List containing all the apartments that a single lsiting contains. This can be initially set to an empty list.
+* `apartments` - a Python List containing all the apartments that a single listing contains. This can be initially set to an empty list.
 * `date` -  an int representing the expected date when the listing is available for viewing. This field will be used in determining the *priority of listing viewings*. Thus, it's possible for earlier reservations to be deprioritized based on the listing's availability or scheduled viewings.
 
 The constructor for an `ApartmentListing` will take in the expected date that listing should be ready:
@@ -178,11 +180,13 @@ The date format will be stored as an `int` in a `YYYYMMDD`. This format keeps th
 * May 15, 2019 --> 20190515
 * October 31, 2022 --> 20221031
 
-In addition to the constructor, getters for the date attribute, the ability to add Apartment objects to the listing, as well as a method to construct a string representing the listing details will need to be implemented:
+In addition to the constructor, you will need to implement getters for the date attribute, the ability to add Apartment objects to the listing, as well as a method to construct a string representing the listing details:
 
 * `get_date(self)`
 * `add_apartment(self, apartment)` - will add the apartment object to the end of the Python List
-* `info(self)` - constructs and returns a string containing the date of the listng, all information for each apartment in the listing, as well as the total listing price. Since we're storing various Apartment objects in this class, we can utilize polymorphism and simply call the `get_apartment_details()` method on the Apartment objects when constructing the string for our entire listing, as well as `get_price()` to compute the `ApartmentListing` total price
+* `info(self)` - constructs and returns a string containing the date of the listng, all information for each apartment in the listing, as well as the total listing price.
+*
+* Since we're storing various Apartment objects in this class, we can utilize **polymorphism** and simply call the `get_apartment_details()` method on the Apartment objects when constructing the string for our entire listing, as well as `get_price()` to compute the `ApartmentListing` total price.
 
 An example of the `info()` string format is given below:
 
@@ -226,8 +230,8 @@ The `ListingQueue` class will be defined in `ListingQueue.py`. This priority que
 
 In addition to the construction of the MinHeap in this class, two methods are required to be implemented:
 
-* `add_listing(self, apartment_listing)` - an `apartment_listing` object will be stored in the MinHeap *prioritized by its date attribute* (lower value means higher priority)
-* `process_next_listing(self)` - this removes the root node from the MinHeap (and restructures the MinHeap), and returns a string containing the root value's apartment listiing description. If the `ListingQueue` is empty, then it should return an empty string.
+* `add_listing(self, apartment_listing)` - an `apartment_listing` object will be stored in the MinHeap *prioritized by its date attribute* (lower value means **higher** priority)
+* `process_next_listing(self)` - this method removes the root node from the MinHeap (and restructures the MinHeap), and returns a string containing the root value's apartment listing description. If the `ListingQueue` is empty, then it should return an empty string.
 
 The automated tests will create various apartment listings with different date attributes. It will then call `process_next_listing()` one at a time and check the removed ApartmentListing is in the right priority by checking their expected `info()` string. You should write similar tests to confirm the MinHeap state is in the correct order.
 
@@ -278,7 +282,7 @@ TOTAL APARTMENT LISTING PRICE: $1960.00
 
 This file should test all of your classes using pytest. Think of various scenarios and edge cases when testing your code according to the given descriptions. You should test every class' method functionality. Even though Gradescope will not use this file when running automated tests (there are separate tests defined for this), it is important to provide this file with various test cases (testing is important!!).
 
-Of course, feel free to reach out / post questions on Piazza as they come up!
+Of course, feel free to reach out and/or post questions on the forum as they come up!
 
 # Submission
 
@@ -303,6 +307,18 @@ In chemistry, these concepts help [simulate how molecules interact over time](ht
 Math students utilize heap data structures like you're implementing to solve problems involving the [shortest path between points](https://medium.com/@josephcardillo/dijkstras-algorithm-and-google-maps-b6fc53b01c0a) and to model situations where events happen in sequence.
 Even in sociology, these [programming patterns help researchers understand social networks](https://www.sciencedirect.com/topics/computer-science/social-network-analysis) (like friend groups), organize people into demographic categories, and make sense of complex survey responses.
 By mastering these concepts, you're gaining skills valuable for interdisciplinary work where organizing data, processing things in order of priority, and modeling relationships between objects are important.
+
+---
+
+## Troubleshooting Common Issues
+
+**Debugging Recommendation**: Test each test, one at a time. Use the `.info()` method to check the state of the data structure.
+
+* `The autograder failed to execute correctly. Please ensure that your submission is valid. ...`
+
+Remove the `print()` statements from your code or place them inside the `if __name__ == "__main__":` block to not interfere with the autograder tests. You want to make sure that the final product that you are delivering does not have any debugging statements when someone is importing your code for testing.
+
+---
 
 ---
 
