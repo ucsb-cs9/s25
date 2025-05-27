@@ -134,6 +134,13 @@ Price: $1960.00
 """
 ```
 
+Note that for the assert statements, we need a backslash at the end of `assert sa1.get_apartment_details() == \` to allow for multi-line asserts, and we use a backslash after the quotes (on the line after that) because every time we indent a new line in the multi-line string, it will inherently add a \n, but we DON'T want to start our string with \n. Ex:
+```
+"\nSTUDIO APARTMENT\n" == """
+STUDIO APARTMENT
+"""
+```
+
 ## FamilyApartment.py
 
 A `FamilyApartment` class definition will exist in `FamilyApartment.py`. Similar to a `FamilyApartment` object, the class constructor will take in the view as well as the layout type of the apartment.
@@ -160,6 +167,13 @@ FAMILY APARTMENT
 View: C
 Layout: Modern
 Price: $2500.00
+"""
+```
+
+Note that for the assert statements, we need a backslash at the end of `assert sa1.get_apartment_details() == \` to allow for multi-line asserts, and we use a backslash after the quotes (on the line after that) because every time we indent a new line in the multi-line string, it will inherently add a \n, but we DON'T want to start our string with \n. Ex:
+```
+"\nSTUDIO APARTMENT\n" == """
+STUDIO APARTMENT
 """
 ```
 
@@ -234,6 +248,8 @@ In addition to the construction of the MinHeap in this class, two methods are re
 * `process_next_listing(self)` - this method removes the root node from the MinHeap (and restructures the MinHeap), and returns a string containing the root value's apartment listing description. If the `ListingQueue` is empty, then it should return an empty string.
 
 The automated tests will create various apartment listings with different date attributes. It will then call `process_next_listing()` one at a time and check the removed ApartmentListing is in the right priority by checking their expected `info()` string. You should write similar tests to confirm the MinHeap state is in the correct order.
+
+If you need additional clarification on how to implement these methods and how to structure the ListingQueue, look [here in the textbook](https://runestone.academy/ns/books/published/pythonds/Trees/BinaryHeapImplementation.html).
 
 For example:
 ```python
