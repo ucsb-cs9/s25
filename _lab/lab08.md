@@ -4,7 +4,7 @@ num: lab08
 ready: true
 desc: "Apartment Listing Manager - BST"
 assigned: 2024-05-28 23:59:59.59-7
-due: 2024-06-04 23:59:59.59-7
+due: 2024-06-03 23:59:59.59-7
 ---
 
 In this lab, you'll have the opportunity to practice:
@@ -15,9 +15,9 @@ In this lab, you'll have the opportunity to practice:
 * Writing functions that ensure Apartment objects are in sorted order based on several attributes
 * Testing your functionality with pytest
 
-**Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the weekdays before the deadline if needed.**
+Note: It is important that you start this lab early so you can utilize our office hours to seek assistance / ask clarifying questions during the weekdays before the deadline if needed.
 
-Please read the lab in its entirety first, before starting on your implementation.
+**Please read the lab in its entirety first, before starting on your implementation.** Please read the **_"How to best approach this lab"_** section, before you begin coding.
 
 
 # Introduction
@@ -26,11 +26,11 @@ The goal for this lab is to write a program that will manage apartment listings 
 
 All apartment listings will be managed by a Binary Search Tree (BST) where nodes are sorted first by location in ascending order (lexicographical order), then by size. Within each node with the same location/size, `Apartment` objects will be grouped in a Python List based on their **order of insertion**.
 
-To manage the apartments for this lab, define `Apartment`, `ApartmentListingNode` and `ApartmentListing` classes that organize the Apartments in a BST data structure. Apartments with the same location/size will be located in the **same node**, and appended to a list based on their insertion order.
+To manage the apartments for this lab, define `Apartment`, `ApartmentListingNode` and `ApartmentListing` classes that organize the Apartments in a BST data structure. Apartments with the same location/size will be located in the **same node**, and **appended** to a list based on their insertion order.
 
 You will also need to write pytests in `testFile.py` verifying that your code works correctly. This lab writeup will provide some test cases for clarity, but the Gradescope autograder will run different tests than what is shown here.
 
-_Use the visualization functions provided at the end of the writeup to help debug what the code is doing at every step._
+✨ _Use the visualization functions provided at the end of the writeup to help debug what the code is doing at every step._ ✨
 
 
 # Applications in Cybersecurity
@@ -42,8 +42,8 @@ What you're learning in this lab directly applies to cybersecurity work. Binary 
 - Organize and analyze security logs to spot unusual activity
 
 The skills you're practicing - creating data structures, comparing objects based on multiple features, and organizing data in a logical order - are the same skills security professionals use when building tools to protect networks and data.
-Further Reading:
 
+Further Reading:
 - Further reading: Academic paper on [how data structures are used in network security](https://www.sciencedirect.com/science/article/pii/S1877050915013575)
 - The [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) contains further information how organization is critical in security systems
 
@@ -51,17 +51,17 @@ Further Reading:
 
 You will need to create four files:
 * `Apartment.py` - Defines an Apartment class. This class will assume all Apartments have attributes like `location` (str), `size` (int), `number of bedrooms` (int), and `rent` (int).
-* `ApartmentListingNode.py` - Defines a BST Node class that includes all necessary fields for a BST node and a Python List collection of Apartment objects, where each node might hold multiple apartments with identical location and size.
-* `ApartmentListing.py` - Defines an ApartmentListing (BST) class that is an ordered collection of a real estate agency’s Apartment listings. You can adapt the BST implementation shown in the textbook to support the specifications in this lab.
+* `ApartmentListingNode.py` - Defines a BST Node class that includes all necessary fields for a BST node and a Python List `collection` of Apartment objects, where each node might hold multiple apartments with identical location and size.
+* `ApartmentListing.py` - Defines an ApartmentListing (BST) class that is an ordered collection of a real estate agency's Apartment listings. You can adapt the BST implementation shown in the textbook to support the specifications in this lab (remember to cite your sources).
 * `testFile.py` - This file should contain your pytest functions that tests the overall correctness of your class definitions.
 
-There will be no starter code for this assignment, but rather class descriptions and required methods are defined in the specification below. **You may also write additional helper methods wherever required.**
+**You may also write additional helper methods wherever required.**
 
-You should organize your lab work in its own directory. This way all files for a lab are located in a single folder. Also, this will be easy to import various files into your code using the `import / from` technique shown in lecture.
+You should organize your lab work in its own directory. This way, all files for a lab are located in a single folder. Also, this will be easy to import various files into your code using the `import / from` technique shown in lecture.
 
 # Apartment.py
 
-The `Apartment.py` file will contain the definition of an `Apartment` class. The `Apartment` class will hold information about apartments (`location`, `size`, `bedrooms`, and `rent`). We will define the `Apartment` attributes as follows:
+The `Apartment.py` file will contain the definition of an `Apartment` class, with the attributes as follows:
 
 * `location` - string value representing the address or area of the apartment (e.g., `Downtown`, `Suburbs`). Your program must store this attribute in uppercase characters.
 
@@ -75,15 +75,20 @@ Write a constructor that allows the user to construct an `Apartment` object by p
 
 * `__init__(self, location, size, bedrooms, rent)`
 
-In addition to the constructor, the following comparator methods are required to be implemented to manage the sorting within a data structure like a Binary Search Tree (BST):
+In addition to the constructor, the following comparison methods are required to manage the sorting within a data structure like a Binary Search Tree (BST):
 
-* `__gt__(self, rhs)` - a comparator operator that allows checking if an `Apartment` object is greater than another `Apartment` object. `Apartment `objects are first organized by the lexicographical/alphabetical order of their `location`. If the `location` is the same, then they'll be determined by their `size`. If the `size` is the same, then they are organized by the `number of bedrooms`. If the `bedrooms` are the same, then they are organized by their `rent` (from least-to-greatest). For example, if both `Apt2` and `Apt1` have the same `location` and `size`, then `Apt2 > Apt1` if `Apt2` has more bedrooms; if `Apt2` and `Apt1` have the same number of bedrooms as well, then `Apt2 > Apt1` if `Apt2` has higher rent.
+* `__gt__(self, rhs)` - checks if an `Apartment` object is greater than another `Apartment` object.
+   * `Apartment `objects are first organized by the lexicographical/alphabetical order of their `location`.
+   * If the `location` is the same, then they'll be determined by their `size`.
+   * If the `size` is the same, then they are organized by the `number of bedrooms`.
+   * If the `bedrooms` are the same, then they are organized by their `rent` (from least-to-greatest).
+   * For example, if both `Apt2` and `Apt1` have the same `location` and `size`, then `Apt2 > Apt1` if `Apt2` has more bedrooms; if `Apt2` and `Apt1` have the same number of bedrooms as well, then `Apt2 > Apt1` if `Apt2` has higher rent.
 
-* `__lt__(self, rhs)` - a comparator operator that allows checking that an Apartment object is less than another Apartment object via the operation `Apt1 < Apt2` according to the same order of comparisons as in the specifications above.
+* `__lt__(self, rhs)` - checks that an Apartment object is less than another Apartment object via the operation `Apt1 < Apt2` according to the same order of comparisons as in the specifications above.
 
-* `__eq__(self, rhs)` - a comparator operator that checks if an `Apartment` object is equivalent to another `Apartment` (both apartments have the same `location`, `size`, `bedrooms`, and `rent`) via the operation `Apt1 == Apt2`
+* `__eq__(self, rhs)` - checks if an `Apartment` object is equivalent to another `Apartment` (both apartments have the same `location`, `size`, `bedrooms`, and `rent`) via the operation `Apt1 == Apt2`.
 
-* `__str__(self)` - a method that returns the details of an apartment via the operation `str(Apt1)`. The string representation should be in the format: `"Location: [location], Size: [size] sqft, Bedrooms: [bedrooms], Rent: $[rent]"` (no newline at the end of the string).
+* `__str__(self)` - returns the details of an apartment via the operation `str(Apt1)`. The string representation should be in the format: `"Location: [location], Size: [size] sqft, Bedrooms: [bedrooms], Rent: $[rent]"` (no newline at the end of the string).
 
 For example:
 
@@ -98,11 +103,11 @@ Location: DOWNTOWN, Size: 700 sqft, Bedrooms: 2, Rent: $1000
 
 # ApartmentListingNode.py
 
-The `ApartmentListingNode.py` file contains the definition of the `ApartmentListingNode` class. This class acts as the node within a Binary Search Tree (BST) specifically designed for managing apartment listings. Each node in the tree organizes apartments based on their `location` and `size`.
+The `ApartmentListingNode.py` file contains the definition of the `ApartmentListingNode` class. This class acts as the node within a Binary Search Tree (BST) designed for managing apartment listings. Each node in the tree organizes apartments based on their `location` and `size`.
 
 The `ApartmentListingNode` class should have the following attributes:
 
-* `location`: A string value representing the geographic location or address of the apartment. To ensure uniformity and facilitate sorting, the location is stored in uppercase.
+* `location`: A string value representing the geographic location or address of the apartment. To ensure uniformity and facilitate sorting, the location is stored in **uppercase**.
 
 * `size`: An integer indicating the square footage of the apartment.
 
@@ -128,6 +133,9 @@ In addition to the construction of the BST in this class, the following methods 
 * `get_right(self)` - returns the right child of the `ApartmentListingNode`. If the right child does not exist, return `None`.
 * `set_right(self, right)` - sets the right child of the `ApartmentListingNode`.
 * `get_apartments(self)` - returns the `apartments` list that contains the `Apartment` objects
+
+Lastly, you will need to display the information for all stored apartments.
+
 * `__str__(self)` - overload the string operator to return the details of all apartmentss in the `ApartmentListingNode` (e.g., `str(ApartmentNode1)`). The string representation should contain all the `Apartment` objects in this `ApartmentListingNode` in insertion order. Make use of the `Apartment` class' `__str__` method, and separate each apartment with a newline character (`\n`) (including the last `Apartment` object in the `apartments` Python List).
 
 For example:
@@ -267,11 +275,11 @@ Location: MOUNTAIN VIEW, Size: 900 sqft, Bedrooms: 2, Rent: $3000
 ```
 
 # Debugging
-As part of the debugging process, we are providing you two functions to visually represent the BST to ensure it looks similar to what you'd expect. Make use of these carefully through multiple steps of your methods: e.g., you can print out the visual representation of your subtree in each step of the recursion so that you can validate your theoretical assumption in action.
+As part of the debugging process, we are providing you two functions to visually represent the BST to ensure it looks similar to what you'd expect. Make use of these carefully through multiple steps of your methods: e.g., you can print out the visual representation of your subtree _at each step of the recursion_ so that you can validate your theoretical assumption in action.
 
 If you want to call this method inside your methods, you can do this by running `show_tree(self.root)` or `show_tree(node)` or `show_tree(apartment_listing_object.root)`.
 
-Below is the code snippet for the functions and the corresponding logic to see it in action -
+Below is the code snippet for the functions and the corresponding logic to see it in action.
 
 ```python
 def show_tree(node):
@@ -321,7 +329,7 @@ if __name__ == "__main__":
     show_tree(listing.root)
 ```
 
-The output for this should look like this -
+The output for this listing should look like as follows:
 
 ```
 Showing Tree Representation of Children under Node - Location: MOUNTAIN VIEW, Size: 900
@@ -361,11 +369,11 @@ Other than the required methods, feel free to implement any helper methods that 
 
 This file should test all of your classes and required methods using pytest. Think of various scenarios and edge cases when testing your code according to the given descriptions. You should test every class' method functionality. Even though Gradescope will not use this file when running automated tests (there are separate tests defined for this), it is important to provide this file with various test cases (testing is important!!). Here, examples of various test cases could be different tree structures.
 
-**A note about Gradescope tests:** Gradescope will use your functions to correctly check the state of your Apartments and ApartmentListing with many scenarios. In order to test if everything is in the correct state, these tests use your ApartmentListing's `preorder` / `inorder` / `postorder` traversals and `add_apartment` methods, as well as getting the string representation of your Apartments (using your `__str__` overloaded method in `Apartment`) to run other tests such as ApartmentListing's `does_apartment_exist`, `get_best_apartment`, `get_worst_apartment`, `get_total_listing_price`, etc. It is important to ensure your `preorder` / `inorder` / `postorder` traversals, Apartment's `__str__` method, and `ApartmentListing`'s `add_apartment` methods work correctly first or else many of the other tests may not pass.
+**A note about Gradescope tests:** Gradescope will use your functions to correctly check the state of your Apartments and ApartmentListing with many scenarios. In order to test if everything is in the correct state, these tests use your ApartmentListing's `preorder` / `inorder` / `postorder` traversals and `add_apartment` methods, as well as getting the string representation of your Apartments (using your `__str__` overloaded method in `Apartment`) to run other tests such as ApartmentListing's `does_apartment_exist`, `get_best_apartment`, `get_worst_apartment`, `get_total_listing_price`, etc. It is important to ensure your `preorder` / `inorder` / `postorder` traversals, Apartment's `__str__` method, and `ApartmentListing`'s `add_apartment` methods work correctly **first** or else many of the other tests may not pass.
 
 **Hint: use the traversal methods (inorder, preorder and/or postorder) to test different tree structures.**
 
-Of course, feel free to reach out / post questions on Piazza as they come up!
+Of course, feel free to reach out / post questions on the forum as they come up!
 
 # How to best approach this lab
 
@@ -378,6 +386,8 @@ This lab contains a lot of implementation details, and different parts of the la
   - if the node did already exist, is the Apartment being inserted to the list of apartments in the node?
 5. Once you've made sure your `add_apartment` is working, you can then move on to `does_apartment_exist`, `get_best_apartment` and `get_worst_apartment`.
 6. Testing is extremely important to help debug any issues you may experience. Be sure to write thorough tests with various edge cases to make sure your program works as expected.
+
+---
 
 # Applications Across Disciplines
 The skills you're learning in this lab are useful in many fields beyond computer science. Here's how other majors use these same concepts:
