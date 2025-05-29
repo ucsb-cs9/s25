@@ -35,15 +35,18 @@ To determine if a binary tree is balanced, perform any tree traversal (such as i
 It's important to note that if a tree is not balanced, it cannot be a complete binary tree. This is because a complete binary tree must be as compact as possible.
 
 # iClicker #2
-Question: Can I compare the root node to the leftmost leaf node when checking if a tree is balanced?
-Answer: No. When checking if a tree is balanced, you're comparing the height of the left and right subtrees of the same node, not one node to another. You do look at the height from the root down to the leaves, but balance is checked locally at each node. For completeness, the tree must be filled level by level from left to right. 
+**Question:*** Can I compare the root node to the leftmost leaf node when checking if a tree is balanced?
 
-Question: Why wouldn't it be incomplete?
-Answer: Because the correct term is “not complete,” not "incomplete." In binary tree terminology, we say a tree is complete or not complete, "incomplete" isn't typically used.
+**Answer:** No. When checking if a tree is balanced, you're comparing the height of the left and right subtrees of the same node, not one node to another. You do look at the height from the root down to the leaves, but balance is checked locally at each node. For completeness, the tree must be filled level by level from left to right. 
+
+**Question:** Why wouldn't it be incomplete?
+
+**Answer:** Because the correct term is “not complete,” not "incomplete." In binary tree terminology, we say a tree is complete or not complete, "incomplete" isn't typically used.
 
 ## Binary Trees vs. Binary Search Trees
-Question: What do we do when we want to add an element to the tree? 
-Answer: Replace it. Depending on how many items the tree has we can check if its an identical item and if not we can assume its an update and replace an item.
+**Question:** What do we do when we want to add an element to the tree? 
+
+**Answer:** Replace it. Depending on how many items the tree has we can check if its an identical item and if not we can assume its an update and replace an item.
 
 A Binary Search Tree is a binary tree where each node follows the **BST property**:
 - Left subtree contains values less than the node’s value
@@ -69,22 +72,27 @@ Disadvantage:
 Hash tables can be memory-intensive because they store a bunch of keys to their corresponding values. They often allocate extra space to reduce collisions and store a large number of keys and values. 
 
 ## Inserting into a BST
-Question: If we are filling in a binary search tree like we are filling in a heap, why is it not guanteed to have completeness? 
-Answer: The way we are fiulling in the heap is left to right, making sure we maintain the heap order property. With this, we maintain binary search tree property which might cause lopsidedness. Whatever the first item you put in as the root will determine the rest of the tree.
+**Question:** If we are filling in a binary search tree like we are filling in a heap, why is it not guanteed to have completeness? 
 
-Question: When inserting into a binary search tree, we insert at the top, but with heaps we insert at the bottom? 
-Answer: In a Binary Search Tree, we start at the root and walk through the tree to find the correct position based on the BST property (left for smaller, right for larger). The new value is inserted as a leaf node. In a Heap, we always insert at the next available position to maintain completeness. After insertion, we percolate up to restore the heap property (min-heap or max-heap).
+**Answer:** The way we are fiulling in the heap is left to right, making sure we maintain the heap order property. With this, we maintain binary search tree property which might cause lopsidedness. Whatever the first item you put in as the root will determine the rest of the tree.
+
+**Question:** When inserting into a binary search tree, we insert at the top, but with heaps we insert at the bottom? 
+
+**Answer:** In a Binary Search Tree, we start at the root and walk through the tree to find the correct position based on the BST property (left for smaller, right for larger). The new value is inserted as a leaf node. In a Heap, we always insert at the next available position to maintain completeness. After insertion, we percolate up to restore the heap property (min-heap or max-heap).
 
 # iClicker 3
-Question: Is this referring to the values in the tree inside or the way that it is structured? 
-Answer: Is the way the tree is going to look like in the end going to change based on the way that I inserted?
+**Question:** Is this referring to the values in the tree inside or the way that it is structured? 
 
-Question: Why don’t we just build a balanced binary tree by picking the middle element from a list of numbers when constructing the tree?
-Answer: We can do that if we know all the data in advance—this is a common way to build a perfectly balanced binary search tree. However, in live systems, we usually don’t know all the items ahead of time. Data arrives incrementally, and we insert values as they come in.
+**Answer:** Is the way the tree is going to look like in the end going to change based on the way that I inserted?
+
+**Question:** Why don’t we just build a balanced binary tree by picking the middle element from a list of numbers when constructing the tree?
+
+**Answer:** We can do that if we know all the data in advance—this is a common way to build a perfectly balanced binary search tree. However, in live systems, we usually don’t know all the items ahead of time. Data arrives incrementally, and we insert values as they come in.
 Because of this, the tree can become unbalanced, especially if values are inserted in sorted order. To handle this, data structures like Red-Black Trees are used—they rebalance themselves automatically after insertions and deletions to maintain efficiency. (Note: Not using in this class.) So, unless you have the full list of values beforehand, you can’t guarantee a balanced tree just by construction.
 
-Question: What happens if we insert a repeated key into a binary search tree?
-Answer: It depends on the application and how the tree is implemented.
+**Question:** What happens if we insert a repeated key into a binary search tree?
+
+**Answer:** It depends on the application and how the tree is implemented.
 Some systems might:
 - Replace the existing value associated with the key (as the book suggests)
 - Warn the user and ask whether to replace or ignore the duplicate
