@@ -363,7 +363,22 @@ End of the apartment listing.
 
 ```
 
-Other than the required methods, feel free to implement any helper methods that you think are useful in your implementation (Gradescope will test the required methods). The automated tests will test your implementation of the required methods by creating an `ApartmentListing` storing various `ApartmentListingNode`s containing `Apartment`s with different `location`, `size`, `bedrooms`, and `rent` attributes. The `add_apartment()` method will be run, with `does_apartment_exist()`, `get_best_apartment()`, `get_worst_apartment()`, `inorder()`, `preorder()`, and `postorder()`, etc. being used to verify that the `ApartmentListing` is fully functional. You should write similar tests to confirm your BST is working properly.
+Other than the required methods, feel free to implement any helper methods that you think are useful in your implementation (Gradescope will test the required methods). The automated tests will test your implementation of the required methods by creating an `ApartmentListing` storing various `ApartmentListingNode`s containing `Apartment`s with different `location`, `size`, `bedrooms`, and `rent` attributes. The `add_apartment()` method will be run, with `does_apartment_exist()`, `get_best_apartment()`, `get_worst_apartment()`, `inorder()`, `preorder()`, and `postorder()`, etc. being used to verify that the `ApartmentListing` is fully functional. 
+
+You should write similar tests to confirm your BST is working properly. _Remember to check that your code works correctly with the location is not given in **uppercase** (like in the asserts above)._
+
+### Tip: Use a Text Comparison Tool
+
+When your tests fail due to minor differences in output (like an extra space, newline, or casing issue), comparing the actual and expected strings side-by-side can save time.
+
+Use one of these tools to identify subtle differences:
+- [https://www.diffchecker.com/](https://www.diffchecker.com/)
+- [https://text-compare.com/](https://text-compare.com/)
+- Or use the `diff` command on the command line:  
+  ```bash
+  diff my_output.txt expected_output.txt
+  ```
+This can help you fix formatting-related bugs quickly, especially in traversal output or `__str__ ` method mismatches.
 
 # testFile.py
 
