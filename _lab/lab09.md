@@ -17,7 +17,7 @@ In this lab, you'll have the opportunity to practice:
 * Writing functions to delete nodes from BST
 * Testing your functionality with pytest
 
-**Note: In this lab, you need to fill-in the provided template and implement the assertions that cover all cases.**
+**Note: In this lab, you need to fill-in the provided template and implement the assertions that cover all cases.** _Pay attention to the guidelines regarding the **MISSING CASE**._
 
 Please read the lab in its entirety first, before starting on your implementation.
 
@@ -47,6 +47,10 @@ You will need to create the following files:
 * `EventNode.py` - Defines a BST Node class that includes fields for a BST node that stores event data.
 * `EventTree.py` - Defines an EventTree (BST) class that is an ordered collection of a set of events (ordered by date).
 * `testFile.py` - This file should contain your pytest functions that tests the overall correctness of your class definitions.
+
+We provided starter code for you below. However, **one of the needed sub-cases for the BST deletion is missing**; once you complete the provided code and test it, you need to **find a test case that will identify the missing section of the code.** 
+- IMPORTANT: even if the autograder gives you full credit, you will miss out on the 8% of this lab grade (manually-graded portion) if you do not identify the test case that reveals the missing code section.
+- You need to add the corresponding code to make this _correctly-formed assertion_ pass (the code provided here should be failing).
 
 You should organize your lab work in its own directory. This way all files for a lab are located in a single folder. Also, this will be easy to import various files into your code using the `import / from` technique shown in lecture.
 
@@ -360,7 +364,10 @@ This file should test all of your classes and required methods using pytest. Thi
 
 **Hint: use the traversal methods (inorder, preorder and/or postorder) to test different tree structures.**
 
-
+As mentioned above, you need to **find a test case that will identify the missing section of the code.** 
+- IMPORTANT: even if the autograder gives you full credit, you will miss out on the 8% of this lab grade (manually-graded portion) if you do not identify the test case that reveals the missing code section.
+- Add this test case's assertion into your test file and add a comment `### MISSING CASE ###` to identify it.
+- You need to add the corresponding code to make this _correctly-formed assertion_ pass (the code provided here should be failing). Make sure that you have the `### MISSING CASE ###` comment in the implementation code to identify the originally-missing portion of the code that handles this test case.
 
 
 ## Applications Across Disciplines
@@ -377,4 +384,4 @@ For more on BSTs in scientific computing, you can about the [use of tree structu
 
 ---
 
-<sup>_* Acknowledgment: Original lab specifications are courtesy Yekaterina Kharitonova and the S24 course staff. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
+<sup>_* Acknowledgment: Original lab specifications based on Richert Wang's lab are courtesy Yekaterina Kharitonova and the S24 course staff. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
