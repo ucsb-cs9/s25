@@ -221,7 +221,7 @@ assert bst.get_total_listing_price() == 26300
 An example of the `inorder()` string format is given below:
 
 ```python
-assert listing.inorder() == \
+assert bst.inorder() == \
 """\
 Location: BAYSHORE RETREAT, Size: 800 sqft, Bedrooms: 2, Rent: $2800
 Location: BAYSHORE RETREAT, Size: 850 sqft, Bedrooms: 2, Rent: $1200
@@ -240,7 +240,7 @@ Location: URBAN CENTER, Size: 850 sqft, Bedrooms: 2, Rent: $3500
 An example of the `preorder()` string format is given below:
 
 ```python
-assert listing.preorder() == \
+assert bst.preorder() == \
 """\
 Location: MOUNTAIN VIEW, Size: 900 sqft, Bedrooms: 1, Rent: $2500
 Location: MOUNTAIN VIEW, Size: 900 sqft, Bedrooms: 2, Rent: $3000
@@ -258,7 +258,7 @@ Location: URBAN CENTER, Size: 850 sqft, Bedrooms: 2, Rent: $3500
 
 An example of the `postorder()` string format is given below:
 ```python
-assert listing.postorder() == \
+assert bst.postorder() == \
 """\
 Location: BAYSHORE RETREAT, Size: 850 sqft, Bedrooms: 2, Rent: $1200
 Location: BAYSHORE RETREAT, Size: 800 sqft, Bedrooms: 2, Rent: $2800
