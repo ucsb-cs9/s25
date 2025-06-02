@@ -4,8 +4,11 @@ num: lab09
 ready: true
 desc: "Event Management - BST Deletion"
 assigned: 2024-06-04 23:59:59.59-7
-due: 2024-06-09 23:59:59.59-7
+due: 2024-06-11 23:59:59.59-7
 ---
+
+This lab is based on the chapter ["Search Tree Implementation"](https://runestone.academy/ns/books/published/pythonds/Trees/SearchTreeImplementation.html).
+We recommend drawing out the different cases and methodically testing them to verify that your code is correctly handling all relevant deletions.
 
 In this lab, you'll have the opportunity to practice:
 
@@ -33,14 +36,15 @@ _Use the visualization functions provided at the end of the writeup to help debu
 
 The Binary Search Tree skills you're developing in this lab have direct applications in cybersecurity.
 BSTs are frequently used in intrusion detection systems to efficiently organize and search through network events by timestamp - similar to how we're managing event dates in this lab.
-When security analysts need to investigate incidents, they must quickly search through massive logs of chronologically ordered events, and BST-based data structures enable this rapid lookup.
+When security analysts need to investigate incidents, they must quickly search through massive logs of chronologically-ordered events, and BST-based data structures enable this rapid lookup.
 Additionally, BSTs are used in packet filtering for firewalls, where rules can be organized hierarchically for efficient matching.
+
 The node deletion techniques you're implementing are particularly important, as security systems must frequently update their data structures when threats are neutralized or rules change. For further reading on data structures in cybersecurity, check out [NIST's guidelines on efficient security monitoring](https://csrc.nist.gov/pubs/sp/800/92/final).
 
 # Instructions
 
 You will need to create the following files:
-* `EventNode.py` - Defines a BST Node class that includes all necessary fields for a BST node that stores the event data.
+* `EventNode.py` - Defines a BST Node class that includes fields for a BST node that stores event data.
 * `EventTree.py` - Defines an EventTree (BST) class that is an ordered collection of a set of events (ordered by date).
 * `testFile.py` - This file should contain your pytest functions that tests the overall correctness of your class definitions.
 
@@ -356,16 +360,21 @@ This file should test all of your classes and required methods using pytest. Thi
 
 **Hint: use the traversal methods (inorder, preorder and/or postorder) to test different tree structures.**
 
+
+
+
 ## Applications Across Disciplines
 
 The ordered data management skills you're learning extend far beyond computer science. In economics, BSTs help implement efficient algorithms for financial market trading systems, where transaction events must be processed in order by time and price.
-Biologists use similar tree structures to organize taxonomic classifications and analyze evolutionary relationships.
-Chemists utilize these data structures when managing experimental data organized by molecular weights or reaction times.
-Mathematicians apply BSTs in computational geometry for point location problems.
-Even sociologists benefit from these structures when analyzing temporal social network data or organizing demographic information.
+- Biologists use similar tree structures to organize taxonomic classifications and analyze evolutionary relationships.
+- Chemists utilize these data structures when managing experimental data organized by molecular weights or reaction times.
+- Mathematicians apply BSTs in computational geometry for point location problems.
+- Even sociologists benefit from these structures when analyzing temporal social network data or organizing demographic information.
+
 The core skill of efficiently managing ordered data with insert, lookup, and delete operations is fundamental across disciplines that deal with hierarchical or time-series data.
+
 For more on BSTs in scientific computing, you can about the [use of tree structures for processing files](https://dl.acm.org/doi/10.1145/357980.357987) or read this recent article on [An Experimental Comparison of Tree-data Structures for Connectivity Queries on Fully-dynamic Undirected Graphs](https://dl.acm.org/doi/10.1145/3709660).
 
 ---
 
-<sup>_* Acknowledgment: Original lab specifications are courtesy Richert Wang. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
+<sup>_* Acknowledgment: Original lab specifications are courtesy Yekaterina Kharitonova and the S24 course staff. This lab has been modified in collaboration with [Noah Spahn](https://github.com/noah-de) to incorporate cybersecurity context._</sup>
