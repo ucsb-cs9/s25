@@ -19,8 +19,8 @@ This typically means there's a `print` statement in your code that's interfering
 - The autograder does **not explicitly check** whether you use recursion or a stack.
 - However, using a **stack** could cause a **timeout** if the implementation isn't efficient.
 - For **traversal methods**, you should:
-  - Use the **getters and setters** provided by the class to access and manipulate nodes.
-  - Write **helper functions** for operations like deletion or traversal.
+  - Use the **getters and setters** in your class implementation to access and manipulate nodes.
+  - Write **recursive helper functions** for operations like deletion or traversal.
   - Follow convention by prefixing recursive helper functions with an **underscore** (e.g., `_delete_node`).
 
 ---
