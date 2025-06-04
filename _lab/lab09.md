@@ -48,7 +48,7 @@ You will need to create the following files:
 * `EventTree.py` - Defines an EventTree (BST) class that is an ordered collection of a set of events (ordered by date).
 * `testFile.py` - This file should contain your pytest functions that tests the overall correctness of your class definitions.
 
-We provided starter code for you below. However, **one of the needed sub-cases for the BST deletion is missing**; once you complete the provided code and test it, you need to **find a test case that will identify the missing section of the code.** 
+We provided starter code for you below. However, **one of the needed sub-cases for the BST deletion is missing**; once you complete the provided code and test it, you need to **find a test case that will identify the missing section of the code.**
 - IMPORTANT: even if the autograder gives you full credit, you will miss out on the 8% of this lab grade (manually-graded portion) if you do not identify the test case that reveals the missing code section.
 - You need to add the corresponding code to make this _correctly-formed assertion_ pass (the code provided here should be failing).
 
@@ -111,17 +111,18 @@ class EventNode:
             return ___
 
     def splice_out(self):
-        # if the node is a leaf
-        if self.___():
+        # The code from the book is more generic, than we need for our lab's
+        # BST deletion implementation.
+        # Implement only the cases necessary for BST node deletion.
+
+        if self.___():  # if the node is a leaf
             if self.is_left_child():
                 self.parent.___ = None
             else:
                 self.___.___ = ___
         elif self.has_any_children():
-            # in the BST deletion the node that is being
-            # spliced out is the left node (the min value)
-            # and should have only the right child
-            """ # NOT USING THIS CODE FROM THE BOOK, refer to it to fill out the code at the bottom
+            """
+            # NOT USING THIS CODE FROM THE BOOK, refer to it to fill out the code at the bottom
             if self.left:
                 if self.is_left_child():
                     self.parent.left = self.left
@@ -135,6 +136,18 @@ class EventNode:
                     self.parent.right = self.right
                 self.right.parent = self.parent
             """
+
+            # For this case, the node that is being spliced out (N) is the left
+            # node (the min value) of its parent (P).
+            # Since then node (N) is the min value, it shoud only have a right
+            # child (R).
+            #
+            # The subtree before splicing out N:
+            #     (P)
+            #    /
+            # (N)
+            #   \
+            #   (R)
             self.parent.___ = self.___
             self.___.parent = self.___
 
@@ -364,7 +377,7 @@ This file should test all of your classes and required methods using pytest. Thi
 
 **Hint: use the traversal methods (inorder, preorder and/or postorder) to test different tree structures.**
 
-As mentioned above, you need to **find a test case that will identify the missing section of the code.** 
+As mentioned above, you need to **find a test case that will identify the missing section of the code.**
 - IMPORTANT: even if the autograder gives you full credit, you will miss out on the 8% of this lab grade (manually-graded portion) if you do not identify the test case that reveals the missing code section.
 - Add this test case's assertion into your test file and add a comment `### MISSING CASE ###` to identify it.
 - You need to add the corresponding code to make this _correctly-formed assertion_ pass (the code provided here should be failing). Make sure that you have the `### MISSING CASE ###` comment in the implementation code to identify the originally-missing portion of the code that handles this test case.
