@@ -1,6 +1,6 @@
 ---
 num: "Lecture 12"
-desc: ""
+desc: "Linked Lists Review, MergeSort Analysis"
 ready: false
 lecture_date: 2025-05-15 15:30:00.00-7:00
 ---
