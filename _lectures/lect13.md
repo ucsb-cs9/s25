@@ -14,15 +14,19 @@ lecture_date: 2025-05-20 15:30:00.00-7:00
 # Questions
 
 Q: We will have until tomorrow to submit the lab?
+
 A: Yes.
 
 Q: How many edges can be going out of the node? 
+
 A: As many as we want.
 
 Q: How do we know when it is a completed tree?
+
 A complete binary tree has all levels fully filled except possibly the last, which is filled from left to right without gaps. This structure allows efficient array-based implementation of heaps, which are used for priority queues, keeping operations like insert and delete at O(log n).
 
 Q: If it is a balanced tree is it also complete? 
+
 A: If its a complete tree, it always has to be balanced.
 
 ## Trees – Terminology
