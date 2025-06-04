@@ -1,6 +1,6 @@
 ---
 num: "Lecture 17"
-desc: ""
+desc: "Final Exam Review Pt. 1"
 ready: false
 lecture_date: 2025-06-03 15:30:00.00-7:00
 ---
