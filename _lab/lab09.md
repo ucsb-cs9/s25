@@ -111,28 +111,18 @@ class EventNode:
             return ___
 
     def splice_out(self):
-        # if the node is a leaf
-        if self.___():
+        # The code from the book is more generic, than we need for our lab's
+        # BST deletion implementation.
+        # Implement only the cases necessary for BST node deletion.
+
+        if self.___():  # if the node is a leaf
             if self.is_left_child():
                 self.parent.___ = None
             else:
                 self.___.___ = ___
         elif self.has_any_children():
-            # The code from the book is more generic, than we need for our
-            # BST deletion implementation.
-            # For this case, the node that is being spliced out (N) is the left
-            # node (the min value) of its parent (P).
-            # Since then node (N) is the min value, it shoud only have a right
-            # child (R).
-            #
-            # The subtree before splicing out N:
-            #     (P)
-            #    /
-            # (N)
-            #   \
-            #   (R)
-
-            """ # NOT USING THIS CODE FROM THE BOOK, refer to it to fill out the code at the bottom
+            """
+            # NOT USING THIS CODE FROM THE BOOK, refer to it to fill out the code at the bottom
             if self.left:
                 if self.is_left_child():
                     self.parent.left = self.left
@@ -146,6 +136,18 @@ class EventNode:
                     self.parent.right = self.right
                 self.right.parent = self.parent
             """
+
+            # For this case, the node that is being spliced out (N) is the left
+            # node (the min value) of its parent (P).
+            # Since then node (N) is the min value, it shoud only have a right
+            # child (R).
+            #
+            # The subtree before splicing out N:
+            #     (P)
+            #    /
+            # (N)
+            #   \
+            #   (R)
             self.parent.___ = self.___
             self.___.parent = self.___
 
