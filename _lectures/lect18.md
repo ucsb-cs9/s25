@@ -60,25 +60,25 @@ TODO
 - A heap is optimized to retrieve a min/max element (depending on the type of heap). Not optimized for a general retrieval of arbitrary items.
 
 ## Insertion/Deletion
-- A binary tree is O(n) for deletion because in the worst case the tree is skewed and we have to traverse almost all elements to insert or delete an item. Insertion depends on the application.
-- A heap is O(logn) for insert and delete
+- A binary tree is $O(n)$ for deletion because in the worst case the tree is skewed and we have to traverse almost all elements to insert or delete an item. Insertion depends on the application.
+- A heap is $O(\log n)$ for insert and delete
 
 ---
 
 ### Q: What does it mean when "insertion depends on the application" in binary trees?  
-> It depends on where we're inserting and also how you implement the insert function. You could be adding at the root O(1), or you could be adding into a balanced binary tree O(logn), or unbalanced binary tree O(n). If you’re implementing the binary tree with a link to the last child, insertion would be O(1) provided there is no ordering structure. In the case of a complete binary tree, this could be implemented with a python list, and thus insertion would also be O(1).
+> It depends on where we're inserting and also how you implement the insert function. You could be adding at the root $O(1)$, or you could be adding into a balanced binary tree $O(\log n)$, or unbalanced binary tree $O(n)$. If you’re implementing the binary tree with a link to the last child, insertion would be $O(1)$ provided there is no ordering structure. In the case of a complete binary tree, this could be implemented with a Python list, and thus insertion would also be $O(1)$.
 
 ---
 
 ### Q: Do all cases of binary search tree deletion have the same O-notation?  
-> Case 1: No children, how much work are we doing? O(1) to delete it and O(logn) to find the node we want to delete.  
-> Case 2: One child. O(1) to delete, and O(logn) to find.  
-> Case 3: Two children: O(logn)
+> Case 1: No children, how much work are we doing? $O(1)$ to delete it and $O(\log n)$ to find the node we want to delete.  
+> Case 2: One child. $O(1)$ to delete, and $O(\log n)$ to find.  
+> Case 3: Two children: $O(\log n)$
 
 ---
 
-### Q: Why is a heap O(logn) for insertion and deletion?  
-> Heaps are optimized to delete the smallest or largest value. They’re typically at the root of the tree, so this is done in O(1) time. We need to maintain the heap property, so we take the last element and move it to where the root used to be, and if the property is broken, then you percolate it down. In the worst case, it goes from root to leaf, and there are logn levels to the tree, so it is O(logn).
+### Q: Why is a heap $O(\log n)$ for insertion and deletion?  
+> Heaps are optimized to delete the smallest or largest value. They’re typically at the root of the tree, so this is done in $O(1)$ time. We need to maintain the heap property, so we take the last element and move it to where the root used to be, and if the property is broken, then you percolate it down. In the worst case, it goes from root to leaf, and there are $\log n$ levels to the tree, so it is $O(\log n)$.
 
 ---
 
@@ -102,12 +102,12 @@ TODO
 See more [here](https://drive.google.com/file/d/122fKbFEMSiLkqIS05fmNVZYnd03r8ebh/view?usp=sharing): lecture 6
 
 - For any loop: note the maximum number of its iterations  
-- A single loop over N elements: O(N)  
-- Two nested loops over N element each: O(N^2)  
-- Three nested loops over N elements each: O(N^3)  
-- A loop that is independent of the number of elements runs in constant time O(1)  
-- A loop that discards about half of its input on each iteration runs in logarithmic time O(logn)  
-  - **NOTE**: the division has to occur in every iteration for it to be O(logn)  
+- A single loop over $N$ elements: $O(N)$  
+- Two nested loops over $N$ elements each: $O(N^2)$  
+- Three nested loops over $N$ elements each: $O(N^3)$  
+- A loop that is independent of the number of elements runs in constant time: $O(1)$  
+- A loop that discards about half of its input on each iteration runs in logarithmic time: $O(\log n)$  
+  - **NOTE**: the division has to occur in every iteration for it to be $O(\log n)$  
 
 ---
 
@@ -127,11 +127,11 @@ The accuracy on these questions today may help boost final exam grade
 See full questions and answer options, as well as explanations for the answers [here]()
 
 - What is the order of magnitude of this algorithm?  
-  - O(n)  
+  - $O(n)$  
 - What is the order of magnitude of this algorithm?  
-  - O(n), 100 * n = 100n  
+  - $O(n)$, $100 \cdot n = 100n$  
 - In an ordered linked list, what is the time complexity for inserting an item at the start of it?  
-  - O(1)  
+  - $O(1)$  
 
 ---
 
@@ -140,14 +140,14 @@ See full questions and answer options, as well as explanations for the answers [
 
 ---
 
-- What is the worst-case time complexity of binary search? Assume a sorted list of n elements.  
-  - O(logn)  
+- What is the worst-case time complexity of binary search? Assume a sorted list of $n$ elements.  
+  - $O(\log n)$  
 - What is the worst-case time complexity of QuickSort?  
-  - O(n^2)  
+  - $O(n^2)$  
 - What is the worst-case time complexity of insertion sort?  
-  - O(n^2)  
+  - $O(n^2)$  
 - What is the worst-case time complexity of the splitting step of merge sort?  
-  - O(logn)  
+  - $O(\log n)$  
 
 ---
 
@@ -167,5 +167,3 @@ Write a recursive function `preorder_traversal(root)` that takes the root of a b
 
 ### Q: Will we be provided with getters?  
 > Assume they are implemented.
-
----
