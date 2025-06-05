@@ -93,4 +93,4 @@ A: Remember, for an element at index i in the list:
 
 Q: Are we assuming the tree is binary when using a list to represent it?
 
-A: Yes, we always assume it’s a binary tree in these contexts (e.g., for heaps or binary trees in general).
+A: Yes, we always assume it’s a binary tree in these contexts (e.g., for heaps).
