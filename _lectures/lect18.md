@@ -66,34 +66,34 @@ TODO
 ---
 
 ### Q: What does it mean when "insertion depends on the application" in binary trees?  
-> It depends on where we're inserting and also how you implement the insert function. You could be adding at the root $O(1)$, or you could be adding into a balanced binary tree $O(\log n)$, or unbalanced binary tree $O(n)$. If you’re implementing the binary tree with a link to the last child, insertion would be $O(1)$ provided there is no ordering structure. In the case of a complete binary tree, this could be implemented with a Python list, and thus insertion would also be $O(1)$.
+> It depends on where and how you insert. If inserting at the root, it's $O(1)$. In a balanced tree, it’s $O(\log n)$; in a skewed tree, $O(n)$. Some implementations (e.g., complete binary tree via list) allow $O(1)$ insertion without ordering.
 
 ---
 
 ### Q: Do all cases of binary search tree deletion have the same O-notation?  
-> Case 1: No children, how much work are we doing? $O(1)$ to delete it and $O(\log n)$ to find the node we want to delete.  
-> Case 2: One child. $O(1)$ to delete, and $O(\log n)$ to find.  
-> Case 3: Two children: $O(\log n)$
+> - 0 children: $O(1)$ to delete, $O(\log n)$ to find.
+> - 1 child: $O(1)$ to delete, $O(\log n)$ to find.
+> - 2 children: $O(\log n)$ due to successor swap
 
 ---
 
 ### Q: Why is a heap $O(\log n)$ for insertion and deletion?  
-> Heaps are optimized to delete the smallest or largest value. They’re typically at the root of the tree, so this is done in $O(1)$ time. We need to maintain the heap property, so we take the last element and move it to where the root used to be, and if the property is broken, then you percolate it down. In the worst case, it goes from root to leaf, and there are $\log n$ levels to the tree, so it is $O(\log n)$.
+> Insertions bubble up and deletions bubble down the tree to maintain the heap property. Both may traverse from root to leaf, which is $O(\log n)$.
 
 ---
 
 ### Q: Do we have to understand the hash and the map data types, but not how to implement it?  
-> Yes, you have to understand the hash map data types, but you are not expected to know how to implement it.
+> Yes, understand how they work and their efficiency, but no need to write the implementation.
 
 ---
 
 ### Q: What is the hash data type?  
-> Hash data type is implemented using a hash function. The reason how the dictionary is able to retrieve data quickly is because of the hash data type. A sample implementation for a hash function is to use the size of my table as a modulo. It may come up on the final. It will come up if you’re comparing the Python list and dictionary. More on hashing [here](https://www.geeksforgeeks.org/introduction-to-hashing-2/)
+> A hash table uses a hash function to map keys to indices for fast lookup. Python dictionaries use this. Example: `hash(key) % table_size`. More on hashing [here](https://www.geeksforgeeks.org/introduction-to-hashing-2/)
 
 ---
 
 ### Q: Will there be anything that we have not implemented that shows up as a surprise on the exam?  
-> Professor is not one for surprises, for example the practice exam is essentially the same format and same types of questions as the exam. TLDR: No, if there is, it will be a bonus question.
+> No. The exam matches the practice exam format. If anything new appears, it’ll be a bonus.
 
 ---
 
@@ -112,12 +112,12 @@ See more [here](https://drive.google.com/file/d/122fKbFEMSiLkqIS05fmNVZYnd03r8eb
 ---
 
 ### Q: What if I have nested loops, but they all depend on the same n?  
-> Pay attention to the conditions closely such as break statements or returns.
+> Check the loop conditions—`break` or `return` might reduce iterations. Don’t assume worst-case without analyzing logic.
 
 ---
 
 ### Q: If we have a return or a break, then we don’t multiply it in our calculation?  
-> Yes, there is an early exit, so it is not included.
+> Correct. Early exits mean the loop may not fully run, so don't multiply blindly.
 
 ---
 
@@ -136,7 +136,7 @@ See full questions and answer options, as well as explanations for the answers [
 ---
 
 ### Q: Are assumptions going to be stated on the exam?  
-> Yes, don’t make your own assumptions, there will be more space on the exam for the questions to be more specific.
+> Yes. Don’t assume anything not clearly specified; questions will be explicit.
 
 ---
 
@@ -156,14 +156,14 @@ Write a recursive function `preorder_traversal(root)` that takes the root of a b
 ---
 
 ### Q: Can we implement it non recursively?  
-> Yes, it is possible, but it is more difficult and many more lines of code than the recursive solution. You have to keep track of where you are in the tree.
+> Yes, but it’s more complex. You’d need to simulate the call stack manually using a real stack.
 
 ---
 
 ### Q: The solution isn’t using a getter, does that mean that the parent, left, and right attributes are in the same class?  
-> This is the Node class, which contains references to parent, left, and right. The question on the exam will likely use getters.
+> Yes. They're direct attributes of the Node class. On the exam, expect to use getters.
 
 ---
 
 ### Q: Will we be provided with getters?  
-> Assume they are implemented.
+> Yes, assume getters are available.
