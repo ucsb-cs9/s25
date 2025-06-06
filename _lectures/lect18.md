@@ -68,7 +68,7 @@ lecture_date: 2025-06-05 15:30:00.00-7:00
 
 # Derive the Order of Magnitude (Big-O)
 
-See more [here](https://drive.google.com/file/d/122fKbFEMSiLkqIS05fmNVZYnd03r8ebh/view?usp=sharing): lecture 6
+More in Lecture 6 [here](https://drive.google.com/file/d/122fKbFEMSiLkqIS05fmNVZYnd03r8ebh/view?usp=sharing)
 
 - For any loop: note the maximum number of its iterations  
 - A single loop over $N$ elements: $O(N)$  
