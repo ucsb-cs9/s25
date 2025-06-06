@@ -8,40 +8,9 @@ lecture_date: 2025-06-05 15:30:00.00-7:00
 * [Slides folder]({{ site.slides_url }}){:target="_blank"}
 
 ---
-# Exam Logistics
-
-- **Date & Time**: Monday, June 9, 7:30 PM – 9:00 PM
-- **Bring**: Pencils and an eraser (pens not recommended)
-- **Instructions**:
-  - Write neatly. If we cannot decipher what you wrote or if it looks like you selected more than one option, we will grade it as “incorrect”.
-  - Have your student ID easily accessible.
-  - Put away all electronic devices, papers, etc. Using them during the exam can result in receiving a 0 for the exam.
-  - No bathroom breaks (unless arranged with a prof in advance due to a medical condition).
-  - Be in class early. If you arrive late, after someone has already turned in their exam, you cannot take the exam and will receive a 0 for it.
-  - When you turn in your exam:
-    - Have your belongings with you
-    - Show your ID when handing your exam
-
----
-
-# What You Have (Hopefully) Gained From This Course
-
-- Define custom Python objects and modules  
-- Test your code automatically using Python  
-- Implement object composition and inheritance  
-- Implement custom data types (Stacks, Queues, Deques, Linked Lists, Ordered Linked Lists, Binary Trees)  
-- Explain pros and cons of different implementations  
-- Analyze running time of algorithms (Searching, Sorting, Storing, Retrieving)  
-- Derive the Big-O notation to explain running time  
-
----
-
-# 10-Week Journey  
-TODO 
-
 # Binary Tree vs. Heap (Binary Heap)
 
-> **NOTE**: If we ask you to compare and contrast something on the exam, when you provide a trait, give a counterexample or counterpoint.
+**NOTE**: If we ask you to compare and contrast something on the exam, when you provide a trait, give a counterexample or counterpoint.
 
 ## Structure
 - A binary tree is a general data structure where each node has at most two children. Uses nodes and links.  
